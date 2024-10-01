@@ -1483,7 +1483,10 @@ border-radius: 0px;
 
 
 <p><strong>演習では，他人のデバイスに触らない．自分のデバイスを，他人に触らせない．</strong></p>
-<p><code>##</code>で始まる行は実行結果である．</p>
+<p><strong>新しいノートブックは作らない．</strong>前回作業したノートブックは，Google
+Driveの「マイドライブ/Colab
+Notebooks」に保存されているはず．それを開いて再開する．</p>
+<p>確認用に，結果を掲載することがある．<code>##</code>で始まる行は実行結果である．</p>
 <div id="関数教科書第4章" class="section level2" number="1">
 <h2><span class="header-section-number">1</span>
 関数（教科書第4章）</h2>
@@ -1497,7 +1500,9 @@ border-radius: 0px;
 <p><strong>課題</strong>
 「こんにちは」「さようなら」「またあした」と表示する関数<code>g</code>を定義し，呼び出せ．</p>
 <p><strong>課題</strong>
-引数の10倍を返す関数<code>f</code>を，<code>def</code>を使わずに定義し，<code>f(3)</code>を求めよ．</p>
+引数の10倍を返す関数<code>f</code>を定義し，<code>f(3)</code>を求めよ．</p>
+<p><strong>課題</strong>
+引数の10倍を返す関数<code>g</code>を，<code>def</code>を使わずに定義し，<code>g(3)</code>を求めよ．</p>
 <pre><code>## 30</code></pre>
 <p><strong>課題</strong> 動作するように修正せよ．</p>
 <pre class="python"><code>x = 25
@@ -1581,7 +1586,7 @@ f2()</code></pre>
 <pre><code>## True</code></pre>
 <p><strong>課題</strong> <code>colors</code>の要素数を求めよ．</p>
 <p><strong>課題</strong>
-<code>colors</code>を使って色あてゲームを作れ．次のように色を入力する．</p>
+<code>colors</code>を使って色あてゲームを作れ．色は次のように入力する．</p>
 <pre class="python"><code>guess = input(&quot;何色でしょう？（入力してください）：&quot;)</code></pre>
 </div>
 <div id="タプル" class="section level3" number="3.2">
@@ -1602,7 +1607,7 @@ f2()</code></pre>
 <p><strong>課題</strong> 空のセットを作れ．</p>
 <p><strong>課題</strong>
 <code>[&quot;Apple&quot;, &quot;Orange&quot;, &quot;Pear&quot;, &quot;Apple&quot;, &quot;Pear&quot;]</code>から重複を取り除け．</p>
-<pre><code>## {&#39;Apple&#39;, &#39;Orange&#39;, &#39;Pear&#39;}</code></pre>
+<pre><code>## {&#39;Apple&#39;, &#39;Pear&#39;, &#39;Orange&#39;}</code></pre>
 </div>
 <div id="辞書" class="section level3" number="3.4">
 <h3><span class="header-section-number">3.4</span> 辞書</h3>
@@ -1658,9 +1663,30 @@ f2()</code></pre>
 によって，LAとChicagoの位置が管理される．しかし，「LAの位置は？」という問に答えられない．．答えられるように，辞書を使うコードに書き換えよ．実行例を示す．</p>
 <pre class="python"><code>print(locations[&quot;LA&quot;])</code></pre>
 <pre><code>## (34.0522, 188.2437)</code></pre>
+</div>
+</div>
+<div id="多変数関数" class="section level2" number="4">
+<h2><span class="header-section-number">4</span> 多変数関数</h2>
+<p><strong>課題</strong> <span class="math inline">\(f(x,
+y):=x^2+y^2\)</span> を定義して，<span class="math inline">\(f(1,
+2)\)</span> を求めよ．<code>f</code>の呼び出し部分を示す。</p>
+<pre class="python"><code>x = 1; y = 2
+print(f(x, y))</code></pre>
+<pre><code>## 5</code></pre>
+<p><strong>課題</strong> <span class="math inline">\(g((x_1,
+x_2)):=x_1^2+x_2^2\)</span> を定義して，<span class="math inline">\(g((1, 2))\)</span>
+を求めよ．<code>g</code>の呼び出し部分を示す。</p>
+<pre class="python"><code>v = (1, 2)
+print(g(v))</code></pre>
+<pre><code>## 5</code></pre>
+<p><strong>課題</strong>
+<code>f</code>による<code>v</code>の値と，<code>g</code>による<code>(x, y)</code>の値を求めよ。</p>
+<pre><code>## 5</code></pre>
+<pre><code>## 5</code></pre>
+<p><strong>課題</strong>
+これまでの課題について，気になったことを新たな<strong>課題</strong>とし，調べて解決せよ．良い課題は，来年の演習で採用する（作問者名掲載）．</p>
 <p><strong>課題</strong>
 （時間に余裕がある場合）生成AIで全てをやり直せ．</p>
-</div>
 </div>
 
 
