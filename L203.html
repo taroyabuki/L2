@@ -11,7 +11,7 @@
 
 
 
-<title>L202</title>
+<title>L203</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1477,219 +1477,289 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore">L202</h1>
+<h1 class="title toc-ignore">L203</h1>
 
 </div>
 
 
-<p><strong>演習では，他人のデバイスに触らない．自分のデバイスを，他人に触らせない．</strong></p>
-<p><strong>新しいノートブックは作らない．</strong>前回作業したノートブックは，Google
-Driveの「マイドライブ/Colab
-Notebooks」に保存されているはず．それを開いて再開する．</p>
-<p>確認用に，結果を掲載することがある．<code>##</code>で始まる行は実行結果である．</p>
-<div id="関数教科書第4章" class="section level2" number="1">
+<p><strong>演習では，他人のデバイスに触らない。自分のデバイスを，他人に触らせない。</strong></p>
+<div id="文字列教科書第6章" class="section level2" number="1">
 <h2><span class="header-section-number">1</span>
-関数（教科書第4章）</h2>
+文字列（教科書第6章）</h2>
+<div id="三重クォート文字列" class="section level3" number="1.1">
+<h3><span class="header-section-number">1.1</span>
+三重クォート文字列</h3>
+<p><strong>課題</strong> printを1回だけ使って，次の出力を得よ。</p>
+<pre><code>Apple
+Banana
+Cherry</code></pre>
+</div>
+<div id="インデックス" class="section level3" number="1.2">
+<h3><span class="header-section-number">1.2</span> インデックス</h3>
 <p><strong>課題</strong>
-関数を定義して呼び出す実験を，一つのセルで行おうとしている．動作するように修正せよ．</p>
-<pre class="python"><code>def f():
-  print(&#39;こんにちは&#39;)
-  print(&#39;さようなら&#39;)
+<code>x = &quot;pen&quot;</code>の0文字目，1文字目，2文字目を表示せよ。</p>
+<p><strong>課題</strong>
+<code>x</code>の3文字目を表示させようとするとどうなるか。</p>
+<p><strong>課題</strong>
+<code>x</code>の-1文字目，-2文字目，-3文字目を表示せよ。</p>
+</div>
+<div id="文字列はイミュータブル" class="section level3" number="1.3">
+<h3><span class="header-section-number">1.3</span>
+文字列はイミュータブル</h3>
+<p><strong>課題</strong>
+<code>x</code>の1文字目を<code>&quot;i&quot;</code>に変更しようとするとどうなるか。</p>
+<p><strong>課題</strong> <code>x</code>が<code>&quot;pin&quot;</code>にせよ。</p>
+</div>
+<div id="文字列の足し算" class="section level3" number="1.4">
+<h3><span class="header-section-number">1.4</span> 文字列の足し算</h3>
+<p><strong>課題</strong>
+<code>x = &quot;apple&quot;</code>と<code>y = &quot;pen&quot;</code>を使って<code>&quot;apple pen&quot;</code>を作る方法を複数挙げよ。</p>
+</div>
+<div id="文字列の掛け算" class="section level3" number="1.5">
+<h3><span class="header-section-number">1.5</span> 文字列の掛け算</h3>
+<p><strong>課題</strong>
+<code>&quot;apple apple apple&quot;</code>は3個の<code>&quot;apple&quot;</code>からなる文字列である。100個の<code>&quot;apple&quot;</code>からなる文字列を作れ。</p>
+</div>
+<div id="大文字小文字変換" class="section level3" number="1.6">
+<h3><span class="header-section-number">1.6</span> 大文字小文字変換</h3>
+<p><strong>課題</strong>
+<code>&quot;We hold these truths...&quot;</code>を大文字に変換せよ。</p>
+<p><strong>課題</strong>
+<code>&quot;SO IT GOES.&quot;</code>を小文字に変換せよ。</p>
+<p><strong>課題</strong>
+<code>&quot;four score and...&quot;</code>の最初の文字を大文字にせよ。</p>
+</div>
+<div id="書式化" class="section level3" number="1.7">
+<h3><span class="header-section-number">1.7</span> 書式化</h3>
+<p><strong>課題</strong>
+<code>author = &quot;ウィリアム・フォークナー&quot;</code>と<code>year_born = &quot;1897&quot;</code>を使って，「<code>&quot;ウィリアム・フォークナー は 1897 年に生まれました。&quot;</code>」という文字列を作れ。</p>
+<p><strong>課題</strong>
+<code>foo = 10</code>と<code>bar = 20</code>を使って，文字列<code>&quot;foo=10, bar=20&quot;</code>を作れ。</p>
+<pre><code>## foo=10, bar=20</code></pre>
+</div>
+<div id="分割" class="section level3" number="1.8">
+<h3><span class="header-section-number">1.8</span> 分割</h3>
+<p><strong>課題</strong>
+<code>&quot;apple, banana, cherry&quot;</code>を<code>,</code>で分割して，リストにせよ。</p>
+</div>
+<div id="結合" class="section level3" number="1.9">
+<h3><span class="header-section-number">1.9</span> 結合</h3>
+<p><strong>課題</strong>
+<code>[&#39;The&#39;, &#39;quick&#39;, &#39;brown&#39;, &#39;fox&#39;, &#39;jumps&#39;, &#39;over&#39;, &#39;the&#39;, &#39;lazy&#39;, &#39;dog&#39;]</code>から，<code>&quot;The quick brown fox jumps over the lazy dog.&quot;</code>を作れ。</p>
+<p>参考：<a href="https://ja.wikipedia.org/wiki/The_quick_brown_fox_jumps_over_the_lazy_dog" class="uri">https://ja.wikipedia.org/wiki/The_quick_brown_fox_jumps_over_the_lazy_dog</a></p>
+</div>
+<div id="空白除去" class="section level3" number="1.10">
+<h3><span class="header-section-number">1.10</span> 空白除去</h3>
+<p><strong>課題</strong>
+<code>&quot;     The     &quot;</code>から<code>&quot;The&quot;</code>を作れ。</p>
+</div>
+<div id="置換" class="section level3" number="1.11">
+<h3><span class="header-section-number">1.11</span> 置換</h3>
+<p><strong>課題</strong>
+<code>&quot;All animals are equal.&quot;</code>の<code>a</code>を<code>@</code>に置き換えよ。</p>
+</div>
+<div id="文字を探す" class="section level3" number="1.12">
+<h3><span class="header-section-number">1.12</span> 文字を探す</h3>
+<p><strong>課題</strong>
+<code>&quot;animals&quot;</code>の最初に「<code>ma</code>」が現れる位置のインデックス値を，<code>index</code>を使って求めよ。</p>
+<p><strong>課題</strong> 「<code>z</code>」を探すとどうなるか。</p>
+<p>補足：メソッド<code>index</code>は，文字列が見つからない場合にエラーを発生させる（そのエラーを再現する課題）。メソッド<code>find</code>は，文字列が見つからない場合に<code>-1</code>を返す（ここでは想定しない）。</p>
+<p><strong>課題</strong>
+例外処理を使って，存在しない文字列を探すと<code>&quot;Not found.&quot;</code>と表示されるようにせよ。</p>
+</div>
+<div id="包含" class="section level3" number="1.13">
+<h3><span class="header-section-number">1.13</span> 包含</h3>
+<p><strong>課題</strong>
+<code>&quot;Cat in the hat.&quot;</code>に<code>&quot;Cat&quot;</code>が含まれているかどうかを調べよ。<code>&quot;Bat&quot;</code>はどうか。</p>
+<p><strong>課題</strong>
+<code>&quot;Harry&quot;</code>に<code>&quot;Potter&quot;</code>が含まれていないかどうかを調べよ。</p>
+<p><strong>課題</strong>
+存在しない文字列を探すと<code>&quot;Not found.&quot;</code>と表示されるようにせよ。</p>
+</div>
+<div id="エスケープ文字" class="section level3" number="1.14">
+<h3><span class="header-section-number">1.14</span> エスケープ文字</h3>
+<p><strong>課題</strong>
+「<code>彼女は &quot;そうだね&quot; と言った</code>」という文字列を作れ。</p>
+<p>補足：教科書の[注釈5]は誤りで，<strong>バックスラッシュ</strong>「\」と<strong>円記号</strong>「¥」は（現代では）別物である。バックスラッシュの<strong>Unicodeスカラ値</strong>はU+005C，円記号のUnicodeスカラ値はU+00A5。プログラミングで特別な意味を持つのはバックスラッシュであり，円記号ではない。歴史的な理由で，マイクロソフトの日本語フォントでは，バックスラッシュと円記号の字形が同じ（Yと=を重ねたような形）になるから，混乱する。また，日本語環境のWordやPowerPointでは，バックスラッシュの見た目を円記号にする設定がデフォルトで有効になっているから，混乱する（バックスラッシュが円記号になるわけではない）。PowerPointではその機能をオフにできない（言語設定を変える必要がある）。</p>
+</div>
+<div id="改行" class="section level3" number="1.15">
+<h3><span class="header-section-number">1.15</span> 改行</h3>
+<p><strong>課題</strong>
+printを1回だけ使って，<code>&quot;&quot;&quot;</code>を使わずに，次のコードと同じ結果を得よ。</p>
+<pre class="python"><code>print(&quot;&quot;&quot;Apple
+Banana
+Cherry&quot;&quot;&quot;)</code></pre>
+</div>
+<div id="スライス" class="section level3" number="1.16">
+<h3><span class="header-section-number">1.16</span> スライス</h3>
+<p><strong>課題</strong>
+<code>ivan = &quot;死の代わりにひとつの光があった。&quot;</code>から，<code>&quot;死の代わりに&quot;</code>と<code>&quot;ひとつの光があった。&quot;</code>を取り出せ。</p>
+<p>出典：トルストイ『イワン・イリイチの死』</p>
+<p>補足：開始インデックスが0の場合，省略できる。また，終了インデックスが文字列の長さと同じ場合，省略できる。</p>
+</div>
+<div id="正規表現教科書第17章" class="section level3" number="1.17">
+<h3><span class="header-section-number">1.17</span>
+正規表現（教科書第17章）</h3>
+<div id="準備" class="section level4" number="1.17.1">
+<h4><span class="header-section-number">1.17.1</span> 準備</h4>
+<p>詩を表示する。</p>
+<pre class="python"><code>import this</code></pre>
+<pre><code>The Zen of Python, by Tim Peters
 
-  f()</code></pre>
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren&#39;t special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you&#39;re Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it&#39;s a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let&#39;s do more of those!</code></pre>
+<p>内容が上記のとおりのファイルzen.txtを作る。メモ：Google
+Colabは，先頭に「<code>!</code>」を付けて，シェルコマンドを実行できる。</p>
+<pre><code>!python3 -c &quot;import this&quot; &gt; zen.txt</code></pre>
 <p><strong>課題</strong>
-「こんにちは」「さようなら」「またあした」と表示する関数<code>g</code>を定義し，呼び出せ．</p>
+zen.txtの，「Beautiful」を含む行を，<code>grep</code>で抽出せよ。</p>
 <p><strong>課題</strong>
-引数の10倍を返す関数<code>f</code>を定義し，<code>f(3)</code>を求めよ．</p>
+zen.txtの，「beautiful」を含む行を，<code>grep</code>で抽出せよ。（大文字小文字を区別しない。）</p>
 <p><strong>課題</strong>
-引数の10倍を返す関数<code>g</code>を，<code>def</code>を使わずに定義し，<code>g(3)</code>を求めよ．</p>
-<pre><code>## 30</code></pre>
-<p><strong>課題</strong> 動作するように修正せよ．</p>
-<pre class="python"><code>x = 25
-print(&#39;今日の最高気温は&#39; + x + &#39;度です．&#39;)</code></pre>
-<pre><code>## 今日の最高気温は25度です．</code></pre>
-<p><strong>課題</strong> 例1と例2の違いを説明せよ．</p>
-<pre class="python"><code># 例1
-a = 123
-print(a * 10)
+zen.txtには「Z」で始まる行がないことを，<code>grep</code>で確認せよ。</p>
+<p><strong>課題</strong>
+zen.txtの，正規表現「idea.」にマッチする文字列含む行を，<code>grep</code>で抽出せよ。</p>
+<p><strong>課題</strong>
+zen.txtの，正規表現「idea.」にマッチする文字列で終わる行を，<code>grep</code>で抽出せよ。</p>
+<p><strong>課題</strong>
+zen.txtから，iで始まってnで終わる単語を，<code>grep</code>で抽出せよ。（大文字小文字を区別しない。）</p>
+<p><strong>課題♠</strong>
+zen.txtから，cを複数個含む単語（例：complicated）を，<code>grep</code>で抽出せよ。（大文字小文字を区別しない。）</p>
+<p><strong>課題♠</strong>
+zen.txtから，同じも字を3個以上含む単語（例：implicit）を，<code>grep</code>で抽出せよ。（大文字小文字を区別しない。ヒント：オプション「<code>-E</code>」を付ける。）</p>
+</div>
+</div>
+</div>
+<div id="ループ教科書第7章" class="section level2" number="2">
+<h2><span class="header-section-number">2</span>
+ループ（教科書第7章）</h2>
+<div id="forループ" class="section level3" number="2.1">
+<h3><span class="header-section-number">2.1</span> forループ</h3>
+<p><strong>課題</strong> <code>&quot;Ted&quot;</code>を1文字ずつ表示せよ。</p>
+<p><strong>課題</strong>
+自分が持っている英和辞典で，<code>for</code>の日本語訳を調べよ。英和辞典の書誌も報告すること。（再現性が必要。<code>weblio</code>では難しいかもしれない。）</p>
+<p><strong>課題</strong>
+リスト<code>[&quot;GOT&quot;, &quot;Narcos&quot;, &quot;Vice&quot;]</code>の要素を一つずつ表示せよ。</p>
+<p><strong>課題</strong>
+辞書<code>{&quot;Apple&quot;: &quot;りんご&quot;, &quot;Grape&quot;: &quot;ぶどう&quot;, &quot;Pear&quot;: &quot;なし&quot;}</code>のキーを一つずつ表示せよ。</p>
+<p><strong>課題</strong>
+リスト<code>[&quot;GOT&quot;, &quot;Narcos&quot;, &quot;Vice&quot;]</code>の要素を，全て大文字にせよ。（元のリストを更新しない。）</p>
+<p><strong>課題</strong>
+リスト<code>[&quot;GOT&quot;, &quot;Narcos&quot;, &quot;Vice&quot;]</code>の要素を，全て大文字にせよ。（元のリストを更新する。<code>enumerate</code>を使う。）</p>
+</div>
+<div id="range" class="section level3" number="2.2">
+<h3><span class="header-section-number">2.2</span> range</h3>
+<p><strong>課題</strong> 1から10までの整数を昇順に表示せよ。</p>
+<p><strong>課題</strong> 25から50までの整数を昇順に表示せよ。</p>
+<p><strong>課題</strong> 10から1までの整数を降順に表示せよ。</p>
+</div>
+<div id="whileループ" class="section level3" number="2.3">
+<h3><span class="header-section-number">2.3</span> whileループ</h3>
+<p><strong>課題</strong>
+次の課題を<code>while</code>を使って解決せよ。</p>
+<ol style="list-style-type: decimal">
+<li>1から10までの整数を昇順に表示せよ。</li>
+<li>25から50までの整数を昇順に表示せよ。</li>
+<li>10から1までの整数を降順に表示せよ。</li>
+</ol>
+<p><strong>課題</strong>
+<code>while</code>を使って，10から1までカウントダウンしてから，<code>&quot;Happy New Year!&quot;</code>と表示せよ。</p>
+<p><strong>課題</strong>
+上の課題を<code>for</code>を使って解決せよ。</p>
+</div>
+<div id="break" class="section level3" number="2.4">
+<h3><span class="header-section-number">2.4</span> break</h3>
+<p><strong>課題</strong>
+上の課題のプログラムを，カウントダウンの途中（5）で止めるものに変更せよ。</p>
+<p><strong>課題</strong> <a href="https://github.com/calthoff/self_taught/blob/master/python_ex212.py" class="uri">https://github.com/calthoff/self_taught/blob/master/python_ex212.py</a>
+は何をするプログラムか，説明せよ。</p>
+</div>
+<div id="continue" class="section level3" number="2.5">
+<h3><span class="header-section-number">2.5</span> continue</h3>
+<p><strong>課題</strong>
+1から5までの整数を昇順に表示せよ。ただし，3は表示しないこと。（方法1：<code>for</code>と<code>continue</code>を使う。）</p>
+<p><strong>課題</strong>
+1から5までの整数を昇順に表示せよ。ただし，3は表示しないこと。（方法2：<code>while</code>と<code>continue</code>を使う。）</p>
+</div>
+<div id="入れ子のループ" class="section level3" number="2.6">
+<h3><span class="header-section-number">2.6</span> 入れ子のループ</h3>
+<p><strong>課題</strong>
+「リスト<code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</code>の要素を一つずつ表示すること」を3回繰り返せ。繰り返しの最初に，何回目の繰り返しなのかを表示すること。</p>
+<p><strong>課題</strong> 入れ子のループを使って，次の結果を得よ。</p>
+<pre><code>* * * * * * * * * 
+* * * * * * * * * 
+* * * * * * * * * 
+* * * * * * * * * 
+* * * * * * * * * 
+* * * * * * * * * 
+* * * * * * * * * 
+* * * * * * * * * 
+* * * * * * * * * </code></pre>
+<p><strong>課題</strong>
+次の表を作れ。（ヒント：<code>print(f&quot;[{10:3}]&quot;)</code>）</p>
+<pre><code> 1  2  3  4  5  6  7  8  9 
+ 2  4  6  8 10 12 14 16 18 
+ 3  6  9 12 15 18 21 24 27 
+ 4  8 12 16 20 24 28 32 36 
+ 5 10 15 20 25 30 35 40 45 
+ 6 12 18 24 30 36 42 48 54 
+ 7 14 21 28 35 42 49 56 63 
+ 8 16 24 32 40 48 56 64 72 
+ 9 18 27 36 45 54 63 72 81</code></pre>
+</div>
+<div id="線形代数" class="section level3" number="2.7">
+<h3><span class="header-section-number">2.7</span> 線形代数</h3>
+<p><strong>課題</strong>
+ライブラリに頼らずに，リストの和を計算する関数<code>mysum</code>を作れ。動作確認のためのコードを示す。</p>
+<pre><code>assert mysum([3, 1, 2]) == 6
+assert mysum([1, 2, 3, 4]) == 10</code></pre>
+<p><strong>課題</strong>
+（<code>sympy.sqrt</code>以外の）ライブラリに頼らずに，与えられた二つのリストをベクトルとみなし，それらの内積を計算する関数<code>dot</code>を作れ。動作確認のためのコードを示す。</p>
+<pre><code>from sympy import sqrt
+assert dot([1, -2, 3], [5, 3, -1]) == -4
+assert dot([1, sqrt(2), sqrt(3), sqrt(6)], [sqrt(6), 2 * sqrt(3), -3 * sqrt(2), 4]) == 4 * sqrt(6)
+# 参照：長崎憲一・横山利章『明解線形代数』（培風館, 改訂版, 2024）の問題17.1</code></pre>
+<p><strong>課題</strong>
+ライブラリに頼らずに，与えられた二つの2次元リストを行列とみなし，それらの和を計算する関数<code>msum</code>を作れ。動作確認のためのコードを示す。</p>
+<pre><code>assert msum([[3, 4, 6], [-3, 1, -5]], [[-2, 5, 1], [4, -7, -3]]) == [[1, 9, 7], [1, -6, -8]]
+# 参照：長崎憲一・横山利章『明解線形代数』（培風館, 改訂版, 2024）の§2の例2</code></pre>
+<p><strong>課題</strong>
+ライブラリに頼らずに，与えられた二つの2次元リストを行列とみなし，それらの積を計算する関数<code>mmult</code>を作れ。動作確認のためのコードを示す。</p>
+<pre><code>A = [[0, 1, 2], [1, 2, 1]]
+B = [[3, 1], [1, 0], [2, 1]]
+C = [[1], [-1]]
 
-# 例2
-a = &#39;123&#39;
-print(a * 10)</code></pre>
-<p><strong>課題</strong> 例1と例2の違いを説明せよ．</p>
-<pre class="python"><code># 例1
-def f1():
-  print(&#39;こんにちは&#39;)
-  print(&#39;さようなら&#39;)
-
-  print(&#39;またあした&#39;)
-
-f1()</code></pre>
-<pre class="python"><code># 例2
-def f2():
-  print(&#39;こんにちは&#39;)
-  print(&#39;さようなら&#39;)
-  
-print(&#39;またあした&#39;)
-
-f2()</code></pre>
+assert mmult(mmult(A, B), C) == [[3], [5]]
+assert mmult(A, mmult(B, C)) == [[3], [5]]
+# 参照：長崎憲一・横山利章『明解線形代数』（培風館, 改訂版, 2024）の§2の例8</code></pre>
 <p><strong>課題</strong>
-文字列を引数にして呼び出すと，その長さに2を足した結果を返す関数<code>f</code>を定義せよ．実行例を示す．</p>
-<pre class="python"><code>print(f(&quot;abcde&quot;))</code></pre>
-<pre><code>## 7</code></pre>
-<pre class="python"><code>print(f(&quot;あいう&quot;))</code></pre>
-<pre><code>## 5</code></pre>
-<p><strong>課題</strong>
-呼び出すと，数値の入力を求め，人間が整数を入力すると，その数値を10倍した結果を返す関数<code>f</code>を定義し，それが正しく動くことを，例を使って確かめよ．</p>
-</div>
-<div id="メソッド" class="section level2" number="2">
-<h2><span class="header-section-number">2</span> メソッド</h2>
-<p><strong>課題</strong>
-<code>&quot;Hello&quot;</code>を大文字にして，<code>&quot;HELLO&quot;</code>を得よ．</p>
-<pre><code>## HELLO</code></pre>
-<p><strong>課題</strong>
-<code>&quot;Hello&quot;</code>の<code>o</code>を<code>@</code>に変えて，<code>&quot;Hell@&quot;</code>を得よ．</p>
-<pre><code>## Hell@</code></pre>
-</div>
-<div id="コンテナ教科書第5章" class="section level2" number="3">
-<h2><span class="header-section-number">3</span>
-コンテナ（教科書第5章）</h2>
-<div id="リスト" class="section level3" number="3.1">
-<h3><span class="header-section-number">3.1</span> リスト</h3>
-<p><strong>課題</strong>
-三つの文字列（<code>&quot;Apple&quot;</code>，<code>&quot;Orange&quot;</code>，<code>&quot;Pear&quot;</code>）を要素とするリスト<code>fruit</code>を作れ．</p>
-<p><strong>課題</strong>
-<code>fruit</code>に，<code>&quot;Banana&quot;</code>と<code>&quot;Peach&quot;</code>を追加せよ．</p>
-<p><strong>課題</strong>
-空のリスト<code>random</code>を作ってから，論理値True，整数100，実数1.1，文字列<code>&quot;Hello&quot;</code>を格納せよ．</p>
-<pre><code>## [True, 100, 1.1, &#39;Hello&#39;]</code></pre>
-<p><strong>課題</strong>
-三つの文字列（<code>&quot;Apple&quot;</code>，<code>&quot;Orange&quot;</code>，<code>&quot;Pear&quot;</code>）を格納するリスト<code>fruit</code>を作り，その0番目，1番目，2番目を取り出せ．</p>
-<p><strong>課題</strong>
-存在しないインデックス値で要素を取り出そうとするとどうなるか．</p>
-<p><strong>課題</strong>
-三つの文字列（<code>&quot;blue&quot;</code>，<code>&quot;green&quot;</code>，<code>&quot;yellow&quot;</code>）を要素とするリスト<code>colors</code>を作り，その2番目の要素をredに変更せよ．</p>
-<pre><code>## [&#39;blue&#39;, &#39;green&#39;, &#39;red&#39;]</code></pre>
-<p><strong>課題</strong>
-<code>colors</code>の最後の要素を取り除け．取り除いた要素を表示してから，<code>colors</code>がどうなっているかを確認せよ．</p>
-<pre><code>## &#39;red&#39;</code></pre>
-<pre><code>## [&#39;blue&#39;, &#39;green&#39;]</code></pre>
-<p><strong>課題</strong>
-空のリストの最後の要素を取り除こうとするとどうなるか．</p>
-<p><strong>課題</strong>
-三つの文字列（<code>&quot;orange&quot;</code>，<code>&quot;pink&quot;</code>，<code>&quot;black&quot;</code>）を要素とするリスト<code>colors2</code>を作ってから，<code>colors</code>と<code>colors2</code>を連結して，新しいリストを作れ．</p>
-<p><strong>課題</strong>
-<code>colors</code>に<code>&quot;yellow&quot;</code>が含まれているかどうかを調べよ．</p>
-<pre><code>## False</code></pre>
-<p><strong>課題</strong>
-<code>colors</code>に<code>&quot;black&quot;</code>が含まれていないかどうかを調べよ．</p>
-<pre><code>## True</code></pre>
-<p><strong>課題</strong> <code>colors</code>の要素数を求めよ．</p>
-<p><strong>課題</strong>
-<code>colors</code>を使って色あてゲームを作れ．色は次のように入力する．</p>
-<pre class="python"><code>guess = input(&quot;何色でしょう？（入力してください）：&quot;)</code></pre>
-</div>
-<div id="タプル" class="section level3" number="3.2">
-<h3><span class="header-section-number">3.2</span> タプル</h3>
-<p><strong>課題</strong> 空のタプルを作れ．</p>
-<pre><code>## ()</code></pre>
-<p><strong>課題</strong>
-<code>&quot;M. Jackson&quot;</code>，1958，Trueを要素とするタプル<code>rndm</code>を作れ．</p>
-<p><strong>課題</strong>
-<code>rndm</code>の1番目の要素を2009に変更しようとするとどうなるか．</p>
-<p><strong>課題</strong>
-<code>&quot;M. Jackson&quot;</code>，2009，Trueを要素とするタプル<code>rndm</code>を作れ．これは<code>rndm</code>を変更したことになるか．</p>
-<p><strong>課題</strong>
-<code>&quot;self_taught&quot;</code>という一つの要素を持つタプルを作れ．</p>
-</div>
-<div id="セット" class="section level3" number="3.3">
-<h3><span class="header-section-number">3.3</span> セット</h3>
-<p><strong>課題</strong> 空のセットを作れ．</p>
-<p><strong>課題</strong>
-<code>[&quot;Apple&quot;, &quot;Orange&quot;, &quot;Pear&quot;, &quot;Apple&quot;, &quot;Pear&quot;]</code>から重複を取り除け．</p>
-<pre><code>## {&#39;Pear&#39;, &#39;Apple&#39;, &#39;Orange&#39;}</code></pre>
-</div>
-<div id="辞書" class="section level3" number="3.4">
-<h3><span class="header-section-number">3.4</span> 辞書</h3>
-<p><strong>課題</strong> 空の辞書を作れ．</p>
-<p><strong>課題</strong>
-キー<code>&quot;Apple&quot;</code>とバリュー<code>&quot;Red&quot;</code>，キー<code>&quot;Banana&quot;</code>とバリュー<code>&quot;Yellow&quot;</code>のペアを格納する辞書<code>fruits</code>を作れ．</p>
-<table>
-<thead>
-<tr class="header">
-<th>キー</th>
-<th>バリュー（値）</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Apple</td>
-<td>Red</td>
-</tr>
-<tr class="even">
-<td>Banana</td>
-<td>Yellow</td>
-</tr>
-</tbody>
-</table>
-<p><strong>課題</strong>
-<code>fruits</code>における，キー<code>&quot;Apple&quot;</code>に対応するバリューを得よ．</p>
-<pre><code>## Red</code></pre>
-<p><strong>課題</strong>
-<code>fruits</code>における，キー<code>&quot;Apple&quot;</code>に対応するバリューを<code>&quot;Green&quot;</code>に変更せよ．</p>
-<pre><code>## {&#39;Apple&#39;: &#39;Green&#39;, &#39;Banana&#39;: &#39;Yellow&#39;}</code></pre>
-<p><strong>課題</strong>
-<code>fruits</code>に，キー<code>&quot;Apple&quot;</code>が含まれているかどうかを調べよ．</p>
-<pre><code>## True</code></pre>
-<p><strong>課題</strong>
-<code>fruits</code>に，キー<code>&quot;Grape&quot;</code>が含まれていないかどうかを調べよ．</p>
-<pre><code>## True</code></pre>
-<p><strong>課題</strong>
-<code>fruits</code>から，キーが<code>&quot;Apple&quot;</code>のペアを削除せよ．</p>
-<pre><code>## &#39;Green&#39;</code></pre>
-<pre><code>## {&#39;Banana&#39;: &#39;Yellow&#39;}</code></pre>
-<p><strong>課題</strong> <a href="https://github.com/calthoff/self_taught/blob/master/python_ex153.py" class="uri">https://github.com/calthoff/self_taught/blob/master/python_ex153.py</a>
-が何をするプログラムなのか，簡単に説明せよ．</p>
-<p><strong>課題</strong>
-リスト，タプル，セット，辞書の違いを表にまとめて説明せよ．</p>
-</div>
-<div id="コンテナの中のコンテナ" class="section level3" number="3.5">
-<h3><span class="header-section-number">3.5</span>
-コンテナの中のコンテナ</h3>
-<p><strong>課題</strong> <a href="https://github.com/calthoff/self_taught/blob/master/python_ex154.py" class="uri">https://github.com/calthoff/self_taught/blob/master/python_ex154.py</a>
-の後で<code>rap.append(&quot;Kendrick Lamar&quot;)</code>を実行すると，<code>rap</code>はどうなるか？</p>
-<p><strong>課題</strong> <code>lists</code>はどうなるか？</p>
-<p><strong>課題</strong> <a href="https://github.com/calthoff/self_taught/blob/master/python_ex157.py" class="uri">https://github.com/calthoff/self_taught/blob/master/python_ex157.py</a>
-によって，LAとChicagoの位置が管理される．しかし，「LAの位置は？」という問に答えられない．．答えられるように，辞書を使うコードに書き換えよ．実行例を示す．</p>
-<pre class="python"><code>print(locations[&quot;LA&quot;])</code></pre>
-<pre><code>## (34.0522, 188.2437)</code></pre>
+dprodを修正し，数の加算と乗算の回数を<code>print</code>で出力せよ。上の例の
+<span class="math inline">\((AB)C\)</span> と <span class="math inline">\(A(BC)\)</span> の，演算回数の違いを調べよ。</p>
 </div>
 </div>
-<div id="多変数関数" class="section level2" number="4">
-<h2><span class="header-section-number">4</span> 多変数関数</h2>
-<p><strong>課題</strong> <span class="math inline">\(f(x,
-y):=x^2+y^2\)</span> を定義して，<span class="math inline">\(f(1,
-2)\)</span> を求めよ．<code>f</code>の呼び出し部分を示す。</p>
-<pre class="python"><code>x = 1; y = 2
-print(f(x, y))</code></pre>
-<pre><code>## 5</code></pre>
-<p><strong>課題</strong> <span class="math inline">\(g((x_1,
-x_2)):=x_1^2+x_2^2\)</span> を定義して，<span class="math inline">\(g((1, 2))\)</span>
-を求めよ．<code>g</code>の呼び出し部分を示す。</p>
-<pre class="python"><code>v = (1, 2)
-print(g(v))</code></pre>
-<pre><code>## 5</code></pre>
+<div id="補足" class="section level2" number="3">
+<h2><span class="header-section-number">3</span> 補足</h2>
 <p><strong>課題</strong>
-<code>f</code>による<code>v</code>の値と，<code>g</code>による<code>(x, y)</code>の値を求めよ。</p>
-<pre><code>## 5</code></pre>
-<pre><code>## 5</code></pre>
-</div>
-<div id="補足" class="section level2" number="5">
-<h2><span class="header-section-number">5</span> 補足</h2>
+これまでの課題について，気になったことを新たな<strong>課題</strong>とし，調べて解決せよ。良い課題は，来年の演習で採用する（作問者名掲載）。</p>
 <p><strong>課題</strong>
-これまでの課題について，気になったことを新たな<strong>課題</strong>とし，調べて解決せよ．良い課題は，来年の演習で採用する（作問者名掲載）．</p>
-<p><strong>課題</strong>
-（時間に余裕がある場合）生成AIで全てをやり直せ．</p>
+（時間に余裕がある場合）生成AIで全てをやり直せ。</p>
 </div>
 
 
