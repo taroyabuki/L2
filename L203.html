@@ -1731,32 +1731,42 @@ zen.txtから，同じも字を3個以上含む単語（例：implicit）を，<
 </div>
 <div id="線形代数" class="section level3" number="2.7">
 <h3><span class="header-section-number">2.7</span> 線形代数</h3>
+<p>参考書</p>
+<ul>
+<li>長崎憲一・横山利章『明解線形代数』（培風館, 改訂版, 2024）</li>
+</ul>
 <p><strong>課題</strong>
-<code>sum</code>を使わず，ライブラリにも頼らずに，リストの和を計算する関数<code>mysum</code>を作れ。動作確認のためのコードを示す。</p>
+<code>sum</code>を使わず，ライブラリにも頼らずに，リストの和を計算する関数<code>mysum</code>を作れ。動作確認のためのコードを示す。（これは次の課題のための練習であって，線形代数ではない。）</p>
 <pre><code>assert mysum([3, 1, 2]) == 6
 assert mysum([1, 2, 3, 4]) == 10</code></pre>
 <p><strong>課題</strong>
 （<code>sympy.sqrt</code>以外の）ライブラリに頼らずに，与えられた二つのリストをベクトルとみなし，それらの内積を計算する関数<code>dot</code>を作れ。動作確認のためのコードを示す。</p>
 <pre><code>from sympy import sqrt
+
 assert dot([1, -2, 3], [5, 3, -1]) == -4
 assert dot([1, sqrt(2), sqrt(3), sqrt(6)], [sqrt(6), 2 * sqrt(3), -3 * sqrt(2), 4]) == 4 * sqrt(6)
-# 参照：長崎憲一・横山利章『明解線形代数』（培風館, 改訂版, 2024）の問題17.1</code></pre>
+# 参照：参考書の問題17.1</code></pre>
 <p><strong>課題</strong>
 ライブラリに頼らずに，与えられた二つの2次元リストを行列とみなし，それらの和を計算する関数<code>msum</code>を作れ。動作確認のためのコードを示す。</p>
-<pre><code>assert msum([[3, 4, 6], [-3, 1, -5]], [[-2, 5, 1], [4, -7, -3]]) == [[1, 9, 7], [1, -6, -8]]
-# 参照：長崎憲一・横山利章『明解線形代数』（培風館, 改訂版, 2024）の§2の例2</code></pre>
+<pre><code>assert msum([[1, 2], [3, 4]], [[5, 6], [7, 8]]) == [[6, 8], [10, 12]]
+assert msum([[3, 4, 6], [-3, 1, -5]], [[-2, 5, 1], [4, -7, -3]]) == [[1, 9, 7], [1, -6, -8]]
+# 参照：参考書の§2 例2</code></pre>
 <p><strong>課題</strong>
 ライブラリに頼らずに，与えられた二つの2次元リストを行列とみなし，それらの積を計算する関数<code>mmult</code>を作れ。動作確認のためのコードを示す。</p>
 <pre><code>A = [[0, 1, 2], [1, 2, 1]]
 B = [[3, 1], [1, 0], [2, 1]]
 C = [[1], [-1]]
 
+assert mmult(A, B) == [[5, 2], [7, 2]]
+assert mmult(B, C) == [[2], [1], [1]]
 assert mmult(mmult(A, B), C) == [[3], [5]]
 assert mmult(A, mmult(B, C)) == [[3], [5]]
-# 参照：長崎憲一・横山利章『明解線形代数』（培風館, 改訂版, 2024）の§2の例8</code></pre>
+# 参照：参考書 §2の例8</code></pre>
 <p><strong>課題</strong>
 dprodを修正し，数の加算と乗算の回数を<code>print</code>で出力せよ。上の例の
 <span class="math inline">\((AB)C\)</span> と <span class="math inline">\(A(BC)\)</span> の，演算回数の違いを調べよ。</p>
+<p>補足：もう少し複雑な練習をしたい人には，RREF（reduced row-echelon
+form，既約行階段形，行簡約階段形，参考書の階段行列）を求める関数を作ってみることを勧める。</p>
 </div>
 </div>
 <div id="補足" class="section level2" number="3">
