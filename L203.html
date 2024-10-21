@@ -1535,7 +1535,6 @@ Cherry</code></pre>
 <code>author = &quot;ウィリアム・フォークナー&quot;</code>と<code>year_born = &quot;1897&quot;</code>を使って，「<code>&quot;ウィリアム・フォークナー は 1897 年に生まれました。&quot;</code>」という文字列を作れ。</p>
 <p><strong>課題</strong>
 <code>foo = 10</code>と<code>bar = 20</code>を使って，文字列<code>&quot;foo=10, bar=20&quot;</code>を作れ。</p>
-<pre><code>## foo=10, bar=20</code></pre>
 </div>
 <div id="分割" class="section level3" number="1.8">
 <h3><span class="header-section-number">1.8</span> 分割</h3>
@@ -1585,10 +1584,10 @@ Cherry</code></pre>
 <div id="改行" class="section level3" number="1.15">
 <h3><span class="header-section-number">1.15</span> 改行</h3>
 <p><strong>課題</strong>
-printを1回だけ使って，<code>&quot;&quot;&quot;</code>を使わずに，次のコードと同じ結果を得よ。</p>
-<pre class="python"><code>print(&quot;&quot;&quot;Apple
+printを1回だけ使って，<code>&quot;&quot;&quot;</code>を使わずに，次の出力を得よ。</p>
+<pre><code>Apple
 Banana
-Cherry&quot;&quot;&quot;)</code></pre>
+Cherry</code></pre>
 </div>
 <div id="スライス" class="section level3" number="1.16">
 <h3><span class="header-section-number">1.16</span> スライス</h3>
@@ -1707,27 +1706,30 @@ zen.txtから，同じも字を3個以上含む単語（例：implicit）を，<
 <h3><span class="header-section-number">2.6</span> 入れ子のループ</h3>
 <p><strong>課題</strong>
 「リスト<code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</code>の要素を一つずつ表示すること」を3回繰り返せ。繰り返しの最初に，何回目の繰り返しなのかを表示すること。</p>
-<p><strong>課題</strong> 入れ子のループを使って，次の結果を得よ。</p>
-<pre><code>* * * * * * * * * 
-* * * * * * * * * 
-* * * * * * * * * 
-* * * * * * * * * 
-* * * * * * * * * 
-* * * * * * * * * 
-* * * * * * * * * 
-* * * * * * * * * 
-* * * * * * * * * </code></pre>
 <p><strong>課題</strong>
-次の表を作れ。（ヒント：<code>print(f&quot;[{10:3}]&quot;)</code>）</p>
-<pre><code> 1  2  3  4  5  6  7  8  9 
- 2  4  6  8 10 12 14 16 18 
- 3  6  9 12 15 18 21 24 27 
- 4  8 12 16 20 24 28 32 36 
- 5 10 15 20 25 30 35 40 45 
- 6 12 18 24 30 36 42 48 54 
- 7 14 21 28 35 42 49 56 63 
- 8 16 24 32 40 48 56 64 72 
- 9 18 27 36 45 54 63 72 81</code></pre>
+2重の<code>for</code>によって，次のコードと同じ結果を得よ。</p>
+<pre class="python"><code>print(&quot;\n&quot;.join([&quot; &quot;.join([&quot;*&quot;] * 9)] * 9))</code></pre>
+<pre><code>* * * * * * * * *
+* * * * * * * * *
+* * * * * * * * *
+* * * * * * * * *
+* * * * * * * * *
+* * * * * * * * *
+* * * * * * * * *
+* * * * * * * * *
+* * * * * * * * *</code></pre>
+<p><strong>課題</strong>
+2重の<code>for</code>によって，次のコードと同じ結果を得よ。</p>
+<pre class="python"><code>print(&quot;\n&quot;.join([&quot;&quot;.join([f&#39;{r * c:3}&#39; for c in range(1, 10)]) for r in range(1, 10)]))</code></pre>
+<pre><code>  1  2  3  4  5  6  7  8  9
+  2  4  6  8 10 12 14 16 18
+  3  6  9 12 15 18 21 24 27
+  4  8 12 16 20 24 28 32 36
+  5 10 15 20 25 30 35 40 45
+  6 12 18 24 30 36 42 48 54
+  7 14 21 28 35 42 49 56 63
+  8 16 24 32 40 48 56 64 72
+  9 18 27 36 45 54 63 72 81</code></pre>
 </div>
 <div id="線形代数" class="section level3" number="2.7">
 <h3><span class="header-section-number">2.7</span> 線形代数</h3>
@@ -1763,7 +1765,7 @@ assert mmult(A, mmult(B, C)) == [[3], [5]]</code></pre>
 <p><strong>課題</strong>
 dprodを修正し，数の加算と乗算の回数を<code>print</code>で出力せよ。上の例の
 <span class="math inline">\((AB)C\)</span> と <span class="math inline">\(A(BC)\)</span> の，演算回数の違いを調べよ。</p>
-<p>補足：もう少し複雑な練習をしたい人には，RREF（reduced row-echelon
+<p>補足♠：もう少し複雑な練習をしたい人には，RREF（reduced row-echelon
 form，既約行階段形，行簡約階段形，参考書の階段行列）を求める関数を作ってみることを勧める。</p>
 </div>
 </div>

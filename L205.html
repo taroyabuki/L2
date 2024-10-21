@@ -11,7 +11,7 @@
 
 
 
-<title>L201</title>
+<title>L205</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1477,420 +1477,172 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore">L201</h1>
+<h1 class="title toc-ignore">L205</h1>
 
 </div>
 
 
-<p><strong>演習では，他人のデバイスに触らない．自分のデバイスを，他人に触らせない．</strong></p>
-<div id="イントロダクション" class="section level2" number="1">
-<h2><span class="header-section-number">1</span> イントロダクション</h2>
-<div id="資料" class="section level3" number="1.1">
-<h3><span class="header-section-number">1.1</span> 資料</h3>
-<div id="教科書" class="section level4" number="1.1.1">
-<h4><span class="header-section-number">1.1.1</span> 教科書</h4>
-<p>アルソフ『独学プログラマー』（日経BP社,
-2018）（紙版でも電子版でもよい．）</p>
+<p><strong>演習では，他人のデバイスに触らない。自分のデバイスを，他人に触らせない。</strong></p>
+<div id="ファイル教科書第9章" class="section level2" number="1">
+<h2><span class="header-section-number">1</span>
+ファイル（教科書第9章）</h2>
+<div id="ファイルに書き出す" class="section level3" number="1.1">
+<h3><span class="header-section-number">1.1</span>
+ファイルに書き出す</h3>
+<p><strong>課題</strong>
+ファイルst.txtを作成し，文字列<code>&quot;Hi from Python!\n&quot;</code>を書き込め。（<code>&quot;\n&quot;</code>は，これで1文字で，改行を表す。）</p>
+<p><strong>課題</strong> ファイルst.txtの内容を表示せよ。</p>
+<p>参考資料：ASCIIコード表</p>
+<pre class="bash"><code># Google Colabでは，行頭に「!」を付けて実行する。
+apt-get install ascii -y &gt; /dev/null
+ascii -x</code></pre>
+<p><strong>課題</strong>
+ファイルst.txtの内容をASCIIコードで表せ。例えば，「Hi」は「48
+69」である。</p>
+<p><strong>課題</strong>
+ファイルst.txtに，<code>&quot;Pythonからこんにちは！\n&quot;</code>を追記して，結果を確認せよ。</p>
+<p>因みに，上の課題をシェルコマンで解決するなら次のとおり。</p>
+<pre class="bash"><code>echo &#39;Hi from Python&#39; &gt; st.txt
+echo &#39;Pythoからこんにちは！&#39; &gt;&gt; st.txt
+cat st.txt</code></pre>
 </div>
-<div id="参考書" class="section level4" number="1.1.2">
-<h4><span class="header-section-number">1.1.2</span> 参考書</h4>
+<div id="ファイルを自動的に閉じる" class="section level3" number="1.2">
+<h3><span class="header-section-number">1.2</span>
+ファイルを自動的に閉じる</h3>
+<p><strong>課題</strong>
+最初の課題でファイルを閉じないとどうなるか，調べる例を作れ。</p>
+<p><strong>課題</strong>
+<code>with</code>を使って，ファイルst.txtに，<code>&quot;Pythonからこんにちは！\n&quot;</code>を書き込め。</p>
+</div>
+<div id="csvファイル" class="section level3" number="1.3">
+<h3><span class="header-section-number">1.3</span> CSVファイル</h3>
+<p>参考書</p>
 <ul>
-<li><a href="https://docs.python.org/ja/3/tutorial/">Python
-チュートリアル</a> 無料で済ませたい場合に使う．（中レベル）</li>
-<li>松浦健一郎, 司ゆき『Python[完全]入門』（SBクリエイティブ, 2021）
-最新のこと以外は何でも正確に載っている．（低～中レベル）</li>
-<li><a href="https://allendowney.github.io/ThinkPython/">Allen B.
-Downey. Think Python. O’Reilly Media, 3rd edition, 2024.</a> （<a href="https://cauldron.sakura.ne.jp/thinkpython/">第2版の日本語訳</a>）
-入門済みの人が読む．（中レベル）</li>
-<li>矢吹太朗『コンピュータでとく数学』（オーム社, 2024）
-数学的な話題の元ネタ．（中レベル）</li>
+<li>Kernighan, Pike『UNIXプログラミング環境』（アスキー,
+1985あるいは2017）</li>
+<li>エイホほか『プログラミング言語AWK』（トッパン,
+1989），（シイエム・シイ出版部, 2001） （新紀元社,
+2004），（ユニバーサル・シェル・プログラミング研究所,
+2010），（オライリー, 第2版, 2024）</li>
 </ul>
+<div id="基本" class="section level4" number="1.3.1">
+<h4><span class="header-section-number">1.3.1</span> 基本</h4>
+<p><strong>課題</strong>
+次のような内容のファイルself_taught.csvを作れ。</p>
+<pre><code>one,two,three
+four,five,six</code></pre>
+<p><strong>課題</strong>
+ファイルself_taught.csvをダウンロードして，Excelで開いた結果を説明せよ。Markdownで表を書いてもよい。</p>
+<p><strong>課題</strong>
+次のシェルスクリプトと同じ結果を得るPythonのコードを書け。ヒント：改行で分割し，行数を数えながら出力する。</p>
+<pre class="bash"><code>awk &#39;{print NR,$0}&#39; self_taught.csv</code></pre>
+<p><strong>課題</strong>
+次のシェルスクリプトと同じ結果を得るPythonコードを書け。</p>
+<pre class="bash"><code>awk -F, &#39;{for(i=1;i&lt;=NF;i++){print NR,i,$i}}&#39; self_taught.csv</code></pre>
+</div>
+<div id="データ処理" class="section level4" number="1.3.2">
+<h4><span class="header-section-number">1.3.2</span> データ処理</h4>
+<p><strong>課題</strong> 次のような内容のファイルscores.csvを作れ。</p>
+<pre><code>name,english,math,gender
+A,60,70,f
+B,90,80,m
+C,70,90,m
+D,90,100,f</code></pre>
+<p><strong>課題</strong>
+（基本統計量A）<code>import pandas as pd</code>を使って，englishの基本統計量を求めよ。</p>
+<p><strong>課題</strong>
+（基本統計量B-1）<code>import csv</code>を使って，scores.csvを2次元リストに格納せよ。</p>
+<pre><code>## [[&#39;name&#39;, &#39;english&#39;, &#39;math&#39;, &#39;gender&#39;], [&#39;A&#39;, &#39;60&#39;, &#39;70&#39;, &#39;f&#39;], [&#39;B&#39;, &#39;90&#39;, &#39;80&#39;, &#39;m&#39;], [&#39;C&#39;, &#39;70&#39;, &#39;90&#39;, &#39;m&#39;], [&#39;D&#39;, &#39;90&#39;, &#39;100&#39;, &#39;f&#39;]]</code></pre>
+<p><strong>課題</strong>
+（基本統計量B-2）<code>data</code>を使って，englishの平均を求めよ。</p>
+<p><strong>課題</strong>
+（基本統計量C）importを使わずに，englishの最大値を求めよ。</p>
+</div>
+<div id="データの交換" class="section level4" number="1.3.3">
+<h4><span class="header-section-number">1.3.3</span> データの交換</h4>
+<p><strong>課題</strong>
+次のコードでできる二つのファイルをダウンロードして，Excelで開く方法を説明せよ。</p>
+<pre class="python"><code>with open(&quot;sample1.csv&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+  f.write(&quot;あ,い,う,え,お\n&quot;)
+  f.write(&quot;か,き,く,け,こ\n&quot;)</code></pre>
+<pre class="python"><code>with open(&quot;sample2.csv&quot;, &quot;w&quot;, encoding=&quot;Shift_JIS&quot;) as f:
+  f.write(&quot;あ,い,う,え,お\n&quot;)
+  f.write(&quot;か,き,く,け,こ\n&quot;)</code></pre>
+<p><strong>課題</strong> ファイル<a href="https://taroyabuki.github.io/L2/sample_exam_results.xlsx">https://taroyabuki.github.io/L2/sample_exam_results.xlsx</a>に，合計点を記入したファイルsample_exam_results_total.xlsxを作れ。結果を確認するコードを示す。</p>
+<pre class="python"><code>df = pd.read_excel(&quot;sample_exam_results_total.xlsx&quot;)
+df.head()</code></pre>
+<pre><code>##   Name  Math  Science  English  History  Art  Total
+## 0  学生1    93       80       53       67   97    390
+## 1  学生2    66       65       57       75   90    353
+## 2  学生3    55       90       91       55   90    381
+## 3  学生4    99       76       56       62   93    386
+## 4  学生5    69       83       94       96   57    399</code></pre>
 </div>
 </div>
-<div id="計画" class="section level3" number="1.2">
-<h3><span class="header-section-number">1.2</span> 計画</h3>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>内容</th>
-<th>教科書</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1a</td>
-<td>Google Colab</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>1b</td>
-<td>Python入門</td>
-<td>2, 3章</td>
-</tr>
-<tr class="odd">
-<td>2a</td>
-<td>関数</td>
-<td>4章</td>
-</tr>
-<tr class="even">
-<td>2b</td>
-<td>コンテナ</td>
-<td>5章</td>
-</tr>
-<tr class="odd">
-<td>3a</td>
-<td>文字列，正規表現</td>
-<td>6, 17章</td>
-</tr>
-<tr class="even">
-<td>3b</td>
-<td>ループ</td>
-<td>7章</td>
-</tr>
-<tr class="odd">
-<td>4</td>
-<td>モジュール</td>
-<td>8章</td>
-</tr>
-<tr class="even">
-<td>5a</td>
-<td>ファイル</td>
-<td>9章</td>
-</tr>
-<tr class="odd">
-<td>5b</td>
-<td>データ構造</td>
-<td>21章</td>
-</tr>
-<tr class="even">
-<td>6a</td>
-<td>アルゴリズム</td>
-<td>22章</td>
-</tr>
-<tr class="odd">
-<td>6b</td>
-<td>マークアップ</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>7</td>
-<td>オブジェクト指向プログラミング</td>
-<td>12–14章</td>
-</tr>
-<tr class="odd">
-<td>8</td>
-<td>コンテナ，シェル，バージョン管理</td>
-<td>16, 19章</td>
-</tr>
-<tr class="even">
-<td>9</td>
-<td>ウェブ</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>10</td>
-<td>データベース</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>11</td>
-<td>大規模言語モデル</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>12</td>
-<td>C言語</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>13</td>
-<td>プログラム開発</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 </div>
-<div id="評価" class="section level3" number="1.3">
-<h3><span class="header-section-number">1.3</span> 評価</h3>
-<div id="レポート" class="section level4" number="1.3.1">
-<h4><span class="header-section-number">1.3.1</span> レポート</h4>
-<ol style="list-style-type: decimal">
-<li>第1回～第7回（50点）</li>
-<li>第8回～第13回（50点）</li>
-</ol>
-<div id="レポート1の作成方法" class="section level5" number="1.3.1.1">
-<h5><span class="header-section-number">1.3.1.1</span>
-レポート1の作成方法</h5>
-<ul>
-<li><a href="https://colab.research.google.com/?hl=ja#create=true">Google
-Colaboratoryの新しいノートブック</a>を使う．（毎回新規作成するわけではない．レポートを提出するまでは，同じノートブックを使う．ノートブックはGoogle
-Driveの「マイドライブ/Colab Notebooks」に保存されているはず．）</li>
-<li>Google
-Colabで，ファイル→ダウンロード→.ipynbをダウンロードし，ダウンロードした.ipynbファイルを，manabaに提出する（PDFやWordは不可）．</li>
-<li>提出できるファイルは1回のレポートにつき一つだけである．</li>
-<li>書くべきこと
-<ul>
-<li>課題</li>
-<li>説明（自分と同レベルの者が読んでわかる程度の詳しさで）</li>
-<li>コード</li>
-<li>実行結果</li>
-</ul></li>
-<li>目次を付ける（講義の回ごとにテキストセルでラベルを付けておけば，目次は自動的にできる）．</li>
-<li>冒頭のテキストセルの例を示す（適時置換）．</li>
-</ul>
-<pre><code># レポート1（#の後は空白）
+<div id="オブジェクト指向プログラミング教科書第12章" class="section level2" number="2">
+<h2><span class="header-section-number">2</span>
+オブジェクト指向プログラミング（教科書第12章）</h2>
+<p><strong>課題</strong>
+クラス<code>Orange</code>を作れ。インスタンスを生成したときに，「Created!」と表示されるようにせよ。インスタンスの生成例を示す。</p>
+<pre class="python"><code>or1 = Orange()</code></pre>
+<pre><code>## Created!</code></pre>
+<pre class="python"><code>or2 = Orange()</code></pre>
+<pre><code>## Created!</code></pre>
+<p><strong>課題</strong>
+クラス<code>Orange</code>を，二つのインスタンス変数（<code>weight</code>と<code>color</code>）をもつものに作り変えよ。インスタンスを生成し，インスタンス変数を確認する例を示す。</p>
+<pre class="python"><code>or1 = Orange(10, &quot;dark orange&quot;)</code></pre>
+<pre><code>## Created!</code></pre>
+<pre class="python"><code>print(or1.weight)</code></pre>
+<pre><code>## 10</code></pre>
+<pre class="python"><code>print(or1.color)</code></pre>
+<pre><code>## dark orange</code></pre>
+<p><strong>課題</strong>
+前の課題で作成したインスタンスの変数の値を変更せよ。例を示す。</p>
+<pre class="python"><code>or1.weight = 100
+or1.color = &quot;light orange&quot;
 
-学籍番号　氏名</code></pre>
-<ul>
-<li>目次のために必要なテキストセルの例を示す．</li>
-</ul>
-<pre><code>## 1 イントロダクション</code></pre>
-</div>
-<div id="レポート2の作成方法" class="section level5" number="1.3.1.2">
-<h5><span class="header-section-number">1.3.1.2</span>
-レポート2の作成方法</h5>
-<p>後日提示する．</p>
-</div>
-</div>
-<div id="不可になる場合" class="section level4" number="1.3.2">
-<h4><span class="header-section-number">1.3.2</span> 不可になる場合</h4>
-<ul>
-<li>レポートの合計点が60点未満である．</li>
-<li>レポートに不正がある．（類似レポートが検出された場合，それを提出した学生全員0点とする．）</li>
-<li>欠席が4回以上ある．（病気，家庭・親族の事情等は原則考慮しない．3回までで自分で調整すること．）</li>
-</ul>
-</div>
-</div>
-<div id="生成ai" class="section level3" number="1.4">
-<h3><span class="header-section-number">1.4</span> 生成AI</h3>
-<p>使い方（良い例）</p>
-<ol style="list-style-type: decimal">
-<li>教科書や提示された資料だけを使って課題を解く．</li>
-<li>生成AIを使って課題を解いてみる．
-<ul>
-<li>回答が生成される場合
-<ul>
-<li>自分の回答と同じ場合：自分が身に付けるべきことは何かを決める．</li>
-<li>自分の回答と異なる場合：要調査</li>
-</ul></li>
-<li>回答が生成されない場合：プロンプトが悪いのか，生成AIの性能の問題なのかを考える．</li>
-</ul></li>
-<li>次に似た問題を解くときは，面倒な部分を生成AIに任せる．</li>
-</ol>
-<p>使い方（悪い例）</p>
-<ol style="list-style-type: decimal">
-<li>生成AIを使って課題を解いてみる．</li>
-<li>結果をレポートにコピペする．</li>
-</ol>
-</div>
-<div id="課題" class="section level3" number="1.5">
-<h3><span class="header-section-number">1.5</span> 課題</h3>
-<p>LaTeXについては第6回で改めて学ぶ予定だが，とりあえず，簡単な数式は書けるようにしておきたい．</p>
-<p>Google Colabのテキストセルでは <span class="math inline">\(\mathrm{\LaTeX}\)</span>
-の数式（の一部）が使える．</p>
-<ul>
-<li>インラインでは<code>$E=mc^2$</code>のように<code>$</code>で囲む．結果：<span class="math inline">\(E=mc^2\)</span>.</li>
-<li>ディスプレイでは<code>$$E=mc^2$$</code>のように<code>$$</code>で囲む．結果は次のとおり．
-<span class="math display">\[E=mc^2\]</span></li>
-</ul>
-<table>
-<thead>
-<tr class="header">
-<th>結果</th>
-<th>マークアップ</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(\sqrt{x}\)</span></td>
-<td><code>$\sqrt{x}$</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\frac{a}{b}\)</span></td>
-<td><code>$\frac{a}{b}$</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\pm\)</span></td>
-<td><code>$\pm$</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(a_1+\dots+a_n\)</span></td>
-<td><code>$a_1+\dots+a_n$</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(a_1,\dots,a_n\)</span></td>
-<td><code>$a_1,\dots,a_n$</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(a_{ij}\)</span></td>
-<td><code>$a_{ij}$</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>課題</strong> 解の公式についての，次の記述を再現せよ．</p>
-<p><span class="math inline">\(ax^2+bx+c=0\)</span> <span class="math inline">\((a\neq 0)\)</span> を満たす <span class="math inline">\(x\)</span> は <span class="math display">\[x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}.\]</span>
-<strong>課題</strong> 和についての，次を記述を再現せよ．</p>
-<p><span class="math display">\[\sum_{i=1}^na_i=a_1+a_2+\dots+a_n.\]</span></p>
-</div>
-<div id="宿題" class="section level3" number="1.6">
-<h3><span class="header-section-number">1.6</span> 宿題</h3>
-<p>次のサービスのアカウントを作っておく（第6回で使う予定．使わなくても，学生生活では役に立つ）．</p>
-<ul>
-<li><a href="https://ja.overleaf.com/" class="uri">https://ja.overleaf.com/</a></li>
-<li><a href="https://cloudlatex.io/ja" class="uri">https://cloudlatex.io/ja</a></li>
-</ul>
-<p>演習で直接使う予定はないが，<a href="https://education.github.com/pack">GitHub Student Developer
-Pack</a> に入っておくと，GitHub
-CopilotやNotionなどの有料ツールが無料で使えて便利である．</p>
-</div>
-</div>
-<div id="python入門" class="section level2" number="2">
-<h2><span class="header-section-number">2</span> Python入門</h2>
-<div id="マークダウンについてのメモ" class="section level3" number="2.1">
-<h3><span class="header-section-number">2.1</span>
-マークダウンについてのメモ</h3>
-<p>Google ColabのUIがないものを紹介する．</p>
-<ul>
-<li>コード1：「<span style="font-family: monospace;">`コード`</span>」とすると，マークアップは解釈されない（「<span style="font-family: monospace;">`</span>」はバックスクォート．Shift +
-<code>@</code>で入力）．</li>
-<li>コード2：改行を含むコードは「<span style="font-family: monospace;">```</span>」で囲む．最初を「<span style="font-family: monospace;">```python</span>」にすると，Pythonのシンタックスハイライトが効く．</li>
-</ul>
-<p><span style="font-family: monospace;"> ```python<br> print(1)<br>
-print(2)<br> ``` </span></p>
-<pre class="python"><code>print(1)
-print(2)</code></pre>
+print(or1.weight)</code></pre>
+<pre><code>## 100</code></pre>
+<pre class="python"><code>print(or1.color)</code></pre>
+<pre><code>## light orange</code></pre>
 <p><strong>課題</strong>
-次の表を作れ．ただし，横幅はこの通りでなくてよい．</p>
-<table>
-<thead>
-<tr class="header">
-<th>見出し1</th>
-<th>見出し2</th>
-<th align="right">右寄せ</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>セル1-1</td>
-<td>セル1-2</td>
-<td align="right">セル1-3</td>
-</tr>
-<tr class="even">
-<td>セル2-1</td>
-<td>セル2-2</td>
-<td align="right">セル2-3</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="さあはじめよう教科書第2章" class="section level3" number="2.2">
-<h3><span class="header-section-number">2.2</span>
-さあ，はじめよう（教科書第2章）</h3>
-<p><strong>課題</strong> 次のコードを説明せよ．Google
-Colabで実行する場合は，行頭に「<code>!</code>」を付けること．</p>
-<pre class="bash"><code>apt-get update | tail -n 1
-apt-get install nasm | tail -n 1</code></pre>
-<pre class="bash"><code>wget -q -O hello.asm https://raw.githubusercontent.com/calthoff/self_taught/master/bash_ex0.sh
-cat hello.asm</code></pre>
-<pre><code>## 
-## global  _start
-##         section .text
-## _start:
-##         mov     rax, 1
-##         mov     rdi, 1
-##         mov     rsi, message
-##         mov     rdx, 13
-##         syscall
-##         ; exit(0)
-##         mov     eax, 60
-##         xor     rdi, rdi
-##         syscall
-## message:
-##         db      &quot;Hello, World!&quot;, 10</code></pre>
-<pre class="bash"><code>nasm -f elf64 hello.asm
-ld -s hello.o
-./a.out</code></pre>
-<pre><code>## Hello, World!</code></pre>
-<p><strong>課題</strong> 「Hello,
-World!」と表示するPythonのプログラムを書いて，実行せよ．</p>
+クラス<code>Orange</code>に，メソッド<code>rot</code>を追加せよ。メソッド<code>rot</code>は，買ってからの日数<code>days</code>とその期間の平均温度<code>temp</code>を受けとって，その積をインスタンス変数<code>mold</code>に記録する。</p>
+<pre class="python"><code>orange = Orange(200, &quot;orange&quot;)</code></pre>
+<pre><code>## Created!</code></pre>
+<pre class="python"><code>print(orange.mold)</code></pre>
+<pre><code>## 0</code></pre>
+<pre class="python"><code>orange.rot(10, 37)
+print(orange.mold)</code></pre>
+<pre><code>## 370</code></pre>
 <p><strong>課題</strong>
-自分の名前を表示するプログラムを書いて，実行せよ．</p>
-</div>
-<div id="プログラミング入門教科書第3章" class="section level3" number="2.3">
-<h3><span class="header-section-number">2.3</span>
-プログラミング入門（教科書第3章）</h3>
+長方形を表すクラス<code>Rectangle</code>を作れ。使用例を示す。</p>
+<pre class="python"><code>rectangle = Rectangle(10, 20)
+print(rectangle.area())</code></pre>
+<pre><code>## 200</code></pre>
+<pre class="python"><code>rectangle.change_size(20, 40)
+print(rectangle.area())</code></pre>
+<pre><code>## 800</code></pre>
 <p><strong>課題</strong>
-「こんにちは！」と5回表示するプログラムを書いて，実行せよ．</p>
-<p><strong>課題</strong> 次のプログラムを修正して，動くようにせよ．</p>
-<pre class="python"><code>for k on range(5)
-  Print(i)</code></pre>
-<div id="算術演算子" class="section level4" number="2.3.1">
-<h4><span class="header-section-number">2.3.1</span> 算術演算子</h4>
-<p><strong>課題</strong> 次のコードの意味を説明せよ．</p>
-<ol style="list-style-type: decimal">
-<li><code>2 + 2</code></li>
-<li><code>2 - 2</code></li>
-<li><code>2 * 2</code></li>
-<li><code>7 / 3</code></li>
-<li><code>7 // 3</code></li>
-<li><code>7 % 3</code></li>
-<li><code>2 ** 3</code></li>
-</ol>
+円を表すクラス<code>Circle</code>を作れ。使用例を示す。</p>
+<pre class="python"><code>circle = Circle(4)
+print(circle.area())</code></pre>
+<pre><code>## 50.26548245743669</code></pre>
 <p><strong>課題</strong>
-<code>+</code>と<code>*</code>のどちらの優先順位が高いかを確認せよ．</p>
-</div>
-<div id="変数" class="section level4" number="2.3.2">
-<h4><span class="header-section-number">2.3.2</span> 変数</h4>
+三角形を表すクラス<code>Triangle</code>を作れ。インスタンスの生成時には，底辺の長さ<code>base</code>と高さ<code>height</code>を指定する。使用例を示す。</p>
+<pre class="python"><code>triangle = Triangle(20, 30)
+print(triangle.area())</code></pre>
+<pre><code>## 300.0</code></pre>
 <p><strong>課題</strong>
-<code>a = 100</code>として，その値を10だけ増やすプログラムを2通り作れ．</p>
-<p><strong>課題</strong>
-次のコードのエラーについて説明せよ。対処法：Colabのメニュー「ランタイム」→「セッションを再起動する」を試してみる．（<code>print = __builtins__.print</code>でもよい．）</p>
-<pre><code>print = 5
-print(&quot;Hello&quot;)</code></pre>
-</div>
-<div id="エラー" class="section level4" number="2.3.3">
-<h4><span class="header-section-number">2.3.3</span> エラー</h4>
-<p><strong>課題</strong>
-次のコードがなぜエラーになるのか，エラーメッセージを解読して，日本語で説明せよ．</p>
-<pre class="python"><code>10 / 0</code></pre>
-<p><strong>課題</strong>
-次のコードがなぜエラーになるのか，エラーメッセージを解読して，日本語で説明せよ.</p>
-<pre class="python"><code>a = 1
- b = 2</code></pre>
-</div>
-<div id="条件文" class="section level4" number="2.3.4">
-<h4><span class="header-section-number">2.3.4</span> 条件文</h4>
-<p><strong>課題</strong>
-<code>x = 5; x == 5</code>について説明せよ．</p>
-<p><strong>課題</strong>
-<code>x = 5; x == 3</code>について説明せよ．</p>
-<p><strong>課題</strong>
-「数値は偶数です．」と出力されるように，<code>x</code>の値を設定せよ．</p>
-<pre class="python"><code>x = 11
-if x % 2 == 0:
-  print(&quot;数値は偶数です．&quot;)
-else:
-  print(&quot;数値は奇数です．&quot;)</code></pre>
-<p><strong>課題</strong>
-次のプログラムを書け．（教科書の「チャレンジ」）</p>
-<ol style="list-style-type: decimal">
-<li>3つの異なる文字列を出力しよう．</li>
-<li>変数が10未満だったらメッセージを出力しよう．10以上だったら，別のメッセージを出力しよう．</li>
-<li>変数が10以下だったらメッセージを出力しよう．10より大きく25以下だったら，別のメッセージを出力しよう．25より大きかったらさらに別のメッセージを出力しよう．</li>
-<li>2つの値で割り算して，その余りを出力しよう．</li>
-<li>2つの値で割り算して，その商を出力しよう．</li>
-<li>変数<code>age</code>に整数を代入し，その<code>age</code>を使ってなにかしらの条件分岐をして，条件に応じてメッセージを出力しよう．</li>
-</ol>
-</div>
-</div>
+リストに格納された全てのインスタンスの面積を求めよ。</p>
+<pre class="python"><code>shapes = [Rectangle(10, 20), Circle(4), Triangle(20, 30)]</code></pre>
 </div>
 <div id="補足" class="section level2" number="3">
 <h2><span class="header-section-number">3</span> 補足</h2>
 <p><strong>課題</strong>
-これまでの課題について，気になったことを新たな<strong>課題</strong>とし，調べて解決せよ．良い課題は，来年の演習で採用する（作問者名掲載）．</p>
+これまでの課題について，気になったことを新たな<strong>課題</strong>とし，調べて解決せよ。良い課題は，来年の演習で採用する（作問者名掲載）。</p>
 <p><strong>課題</strong>
-（時間に余裕がある場合）生成AIで全てをやり直せ．</p>
+（時間に余裕がある場合）生成AIで全てをやり直せ。</p>
 </div>
 
 

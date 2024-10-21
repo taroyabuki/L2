@@ -1,3 +1,11 @@
+*_cache/*
+*_files/*
+*.csv
+*.o
 *.Rmd
 *.sh
+*.txt
+*.xlsx
 .Rhistory
+a.out
+hello.asm
