@@ -1482,7 +1482,10 @@ border-radius: 0px;
 </div>
 
 
-<p><strong>演習では，他人のデバイスに触らない．自分のデバイスを，他人に触らせない．</strong></p>
+<ul>
+<li><strong>出席を確認する。</strong></li>
+<li><strong>演習では，他人のデバイスに触らない．自分のデバイスを，他人に触らせない．</strong></li>
+</ul>
 <div id="イントロダクション" class="section level2" number="1">
 <h2><span class="header-section-number">1</span> イントロダクション</h2>
 <div id="資料" class="section level3" number="1.1">
@@ -1560,42 +1563,42 @@ Downey. Think Python. O’Reilly Media, 3rd edition, 2024.</a> （<a href="https
 </tr>
 <tr class="odd">
 <td>5b</td>
+<td>オブジェクト指向プログラミング1</td>
+<td>12章</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>オブジェクト指向プログラミング2</td>
+<td>13, 14章</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>マークアップ言語</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>8a</td>
 <td>データ構造</td>
 <td>21章</td>
 </tr>
-<tr class="even">
-<td>6a</td>
+<tr class="odd">
+<td>8b</td>
 <td>アルゴリズム</td>
 <td>22章</td>
 </tr>
-<tr class="odd">
-<td>6b</td>
-<td>マークアップ</td>
-<td></td>
-</tr>
 <tr class="even">
-<td>7</td>
-<td>オブジェクト指向プログラミング</td>
-<td>12–14章</td>
-</tr>
-<tr class="odd">
-<td>8</td>
+<td>9</td>
 <td>コンテナ，シェル，バージョン管理</td>
 <td>16, 19章</td>
 </tr>
-<tr class="even">
-<td>9</td>
-<td>ウェブ</td>
-<td></td>
-</tr>
 <tr class="odd">
 <td>10</td>
-<td>データベース</td>
+<td>データベースとウェブ1</td>
 <td></td>
 </tr>
 <tr class="even">
 <td>11</td>
-<td>大規模言語モデル</td>
+<td>データベースとウェブ2</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -1793,25 +1796,9 @@ Colabで実行する場合は，行頭に「<code>!</code>」を付けること�
 apt-get install nasm | tail -n 1</code></pre>
 <pre class="bash"><code>wget -q -O hello.asm https://raw.githubusercontent.com/calthoff/self_taught/master/bash_ex0.sh
 cat hello.asm</code></pre>
-<pre><code>## 
-## global  _start
-##         section .text
-## _start:
-##         mov     rax, 1
-##         mov     rdi, 1
-##         mov     rsi, message
-##         mov     rdx, 13
-##         syscall
-##         ; exit(0)
-##         mov     eax, 60
-##         xor     rdi, rdi
-##         syscall
-## message:
-##         db      &quot;Hello, World!&quot;, 10</code></pre>
 <pre class="bash"><code>nasm -f elf64 hello.asm
 ld -s hello.o
 ./a.out</code></pre>
-<pre><code>## Hello, World!</code></pre>
 <p><strong>課題</strong> 「Hello,
 World!」と表示するPythonのプログラムを書いて，実行せよ．</p>
 <p><strong>課題</strong>
