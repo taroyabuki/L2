@@ -2,6 +2,7 @@
 *_files/*
 *.csv
 *.o
+*.png
 *.Rmd
 *.sh
 *.txt
