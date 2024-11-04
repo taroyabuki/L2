@@ -1510,7 +1510,7 @@ WikiのLaTeX入門</a></li>
 <li><a href="https://cloudlatex.io/ja">Cloud
 LaTeX</a>（latexmkrcを作る手間が不要．）</li>
 </ul></li>
-<li>ローカル（無料枠の制限にとらわれない．PCが高性能ならクラウドより高速．）
+<li>ローカル（無料枠の制限にとらわれない．PCが高性能ならクラウドより高速．カスタマイズしやすい．）
 <ul>
 <li><a href="https://github.com/Paperist/texlive-ja">Docker</a>（PCを汚さない．）</li>
 <li>TeXLiveを直接インストールすることは推奨しない．</li>
@@ -1586,7 +1586,9 @@ $pdf_mode = 3;</code></pre>
 </div>
 <div id="今日の課題" class="section level3" number="1.4">
 <h3><span class="header-section-number">1.4</span> 今日の課題</h3>
-<p>全5ページの文書（PDF形式）を<span class="math inline">\(\mathrm{\LaTeX}\)</span>で書く．各ページには次のものを含める．ただし，「基礎」に含めるべきものが，「実践」や「探求」にある場合は，「基礎」に含めるのを省略してもよい．また，「実践」で使ったテクニックを，「探求」の題材としてもよい．<code>\section</code>の前で改ページすること（<code>\newpage</code>）．</p>
+<p>全5ページの文書（PDF形式）を<span class="math inline">\(\mathrm{\LaTeX}\)</span>で書く．</p>
+<p><strong><a href="https://github.com/taroyabuki/L2/blob/main/latex-sample.pdf">サンプル</a></strong></p>
+<p>各ページには次のものを含める．ただし，「基礎」に含めるべきものが，「実践」や「探求」にある場合は，「基礎」に含めるのを省略してもよい．また，「実践」で使ったテクニックを，「探求」の題材としてもよい．<code>\section</code>の前で改ページすること（<code>\newpage</code>）．</p>
 <ol style="list-style-type: decimal">
 <li>タイトルと目次</li>
 <li>基礎
@@ -1615,8 +1617,9 @@ $pdf_mode = 3;</code></pre>
 <p>できあがったPDFファイルをmanabaで提出する．</p>
 <div id="画像の作り方" class="section level4" number="1.4.1">
 <h4><span class="header-section-number">1.4.1</span> 画像の作り方</h4>
-<p>画像はPythonで作る．例として，<span class="math inline">\(y=\sin(x)\)</span> と <span class="math inline">\(y=x-\dfrac{x^3}{3!}+\dfrac{x^5}{5!}\)</span>
-のグラフを描く例を示す．</p>
+<p>画像は何でもよい（写真も可）．ここでは，画像をPythonで作る方法を示す．例として，<span class="math inline">\(y=\sin(x)\)</span> と <span class="math inline">\(y=x-\dfrac{x^3}{3!}+\dfrac{x^5}{5!}\)</span>
+の，<span class="math inline">\(-\pi\le x\le\pi\)</span>
+でのグラフを描く．</p>
 <pre class="python"><code>import matplotlib.pyplot as plt
 import numpy as np
 
