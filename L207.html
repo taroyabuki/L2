@@ -1506,9 +1506,9 @@ WikiのLaTeX入門</a></li>
 <ul>
 <li>クラウド（手軽）
 <ul>
-<li><a href="https://ja.overleaf.com/">Overleaf</a>（プロジェクトを共有できる．）</li>
+<li><a href="https://ja.overleaf.com/">Overleaf</a>（プロジェクトを共有できる．日本語組版のための準備が必要．）</li>
 <li><a href="https://cloudlatex.io/ja">Cloud
-LaTeX</a>（latexmkrcを作る手間が不要．）</li>
+LaTeX</a>（日本語組版のための準備が不要．）</li>
 </ul></li>
 <li>ローカル（無料枠の制限にとらわれない．PCが高性能ならクラウドより高速．カスタマイズしやすい．）
 <ul>
@@ -1524,6 +1524,8 @@ LaTeX</a>（latexmkrcを作る手間が不要．）</li>
 <li>main.tex（原稿）</li>
 </ol>
 <pre class="tex"><code>\documentclass[autodetect-engine,dvipdfmx]{jsarticle}
+\usepackage{graphicx}
+
 \begin{document}
 
 アインシュタインは $E=mc^2$ と言った\cite{okumura}。
@@ -1545,6 +1547,7 @@ LaTeX</a>（latexmkrcを作る手間が不要．）</li>
 <ol start="3" style="list-style-type: decimal">
 <li>latexmkrc（組版ツール指定）</li>
 </ol>
+<p>このファイルは，Cloud LaTeXでは不要である．</p>
 <pre><code>@default_files = (&quot;main.tex&quot;);
 $latex = &#39;uplatex&#39;;
 $bibtex = &#39;upbibtex&#39;;
@@ -1553,6 +1556,7 @@ $makeindex = &#39;upmendex %O -o %D %S&#39;;
 $pdf_mode = 3;</code></pre>
 <div id="overleaf" class="section level4" number="1.3.1">
 <h4><span class="header-section-number">1.3.1</span> Overleaf</h4>
+<p><strong>最初に生成されるmain.tex（1行目が``）では，日本語の組版ができない．次のような準備が必要である．</strong></p>
 <ol style="list-style-type: decimal">
 <li>新規プロジェクト→空のプロジェクト．プロジェクト名は「<code>hello</code>」とする．</li>
 <li>メニュー→コンパイラを「LaTeX」にする．（さらに，TeX Live
@@ -1592,7 +1596,7 @@ versionを「2022」にするとよいかもしれない．）</li>
 <p><strong><a href="https://github.com/taroyabuki/L2/blob/main/latex-sample.pdf">サンプル</a></strong></p>
 <p>各ページには次のものを含める．ただし，「基礎」に含めるべきものが，「実践」や「探求」にある場合は，「基礎」に含めるのを省略してもよい．また，「実践」で使ったテクニックを，「探求」の題材としてもよい．<code>\section</code>の前で改ページすること（<code>\newpage</code>）．</p>
 <ol style="list-style-type: decimal">
-<li>タイトルと目次</li>
+<li>タイトル・著者，目次（タイトル・著者は<code>\maketitle</code>，目次は<code>tableofcontents</code>で生成される．）</li>
 <li>基礎
 <ul>
 <li>段落</li>
@@ -1632,11 +1636,8 @@ y2 = np.sin(x)
 plt.plot(x, y1)
 plt.plot(x, y2)
 plt.savefig(&quot;plot.pdf&quot;, bbox_inches=&#39;tight&#39;)
-plt.clf()
-plt.plot(x, y1)
-plt.plot(x, y2)
-plt.savefig(&quot;plot.png&quot;, bbox_inches=&#39;tight&#39;)</code></pre>
-<p>生成されたファイルplot.pdfとplot.pngをダウンロードして使う（クラウド環境ならアップロードする）．</p>
+plt.clf()</code></pre>
+<p>生成されたファイルplot.pdfをダウンロードして使う（クラウド環境ならアップロードする）．</p>
 </div>
 </div>
 </div>
