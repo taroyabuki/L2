@@ -1482,10 +1482,6 @@ border-radius: 0px;
 </div>
 
 
-<ul>
-<li><strong>出席を確認する。</strong></li>
-<li><strong>演習では，他人のデバイスに触らない．自分のデバイスを，他人に触らせない．</strong></li>
-</ul>
 <p><strong>新しいノートブックを作る．</strong></p>
 <p>本番は，2年前期（3S）の講義「データ構造とアルゴリズム」である．例えばこの資料には，スタックとキューを，リストを使って実現する課題があるが，スタックはともかくキューは性能がかなり悪い．しかし，ここではそういうことは気にせず，その理由は後で学ぶことにしよう．</p>
 <p>教科書や参考書：1冊だけ挙げるなら，コルメンほか『アルゴリズムイントロダクション』（近代科学社,
@@ -1589,12 +1585,12 @@ def f(n):
 テストにパスするように，f_test.pyを修正せよ．</p>
 </div>
 <div id="入出力の使用" class="section level3" number="2.4">
-<h3><span class="header-section-number">2.4</span> 入出力の使用</h3>
+<h3><span class="header-section-number">2.4</span> 入出力の使用♠</h3>
 <p>テストするプログラムをファイルに書いておく．</p>
 <pre class="python"><code>%%writefile A01.py
 n = int(input())
 print(2 * n) # 間違っている．</code></pre>
-<p>テストを実行する♠．</p>
+<p>テストを実行する．</p>
 <pre class="python"><code>import subprocess
 
 test_cases = [
@@ -1860,8 +1856,8 @@ print(&quot;All tests passed!&quot;)</code></pre>
     print(&quot;All tests passed!&quot;)</code></pre>
 <p>♠AtCoderのアカウントがある人は，<a href="https://atcoder.jp/contests/tessoku-book/tasks/tessoku_book_b" class="uri">https://atcoder.jp/contests/tessoku-book/tasks/tessoku_book_b</a>
 をやってみるのもよいだろう．データの入力方法（定型コード）を示す．</p>
-<pre class="python"><code>N, X = map(int, input().split())
-A = list(map(int, input().split()))</code></pre>
+<pre class="python"><code>N, X = [int(x) for x in input().split()]
+A = [int(x) for x in input().split()]</code></pre>
 <div id="探索の高速化" class="section level4" number="4.2.1">
 <h4><span class="header-section-number">4.2.1</span> 探索の高速化</h4>
 <p><span class="math inline">\(1\)</span>以上<span class="math inline">\(10^8\)</span>以下の整数を<span class="math inline">\(10^7\)</span>個作り，リスト<code>data</code>とする．（まずは<span class="math inline">\(10^3\)</span>くらいで実験して，うまく行きそうなら<span class="math inline">\(10^8\)</span>にするとよい．）</p>
