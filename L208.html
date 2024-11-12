@@ -1482,8 +1482,12 @@ border-radius: 0px;
 </div>
 
 
+<ul>
+<li><strong>出席を確認する。</strong></li>
+<li><strong>演習では，他人のデバイスに触らない．自分のデバイスを，他人に触らせない．</strong></li>
+</ul>
 <p><strong>新しいノートブックを作る．</strong></p>
-<p>本番は，2年前期（3S）の講義「データ構造とアルゴリズム」である．例えばこの資料には，スタックとキューを，リストを使って実現する課題があるが，スタックはともかくキューは性能がかなり悪い．しかし，ここではそういうことは気にせず，その理由は後で学ぶことにしよう．</p>
+<p>本番は，2年前期（3S）の講義「データ構造とアルゴリズム」である．例えばこの資料には，スタックとキューを，リストを使って実装する課題があるが，スタックはともかくキューの性能はかなり悪い．しかし，ここではそういうことは気にせず，その理由は後で学ぶことにしよう．</p>
 <p>教科書や参考書：1冊だけ挙げるなら，コルメンほか『アルゴリズムイントロダクション』（近代科学社,
 2024年12月）だが，入門向けではない．</p>
 <p>選択基準</p>
@@ -1492,17 +1496,25 @@ border-radius: 0px;
 <li>基本を重視するか，応用（≠競技）を重視するか．後者は2冊目にした方がよい．</li>
 <li>使用言語は何か．（C++を避けるべきではない．AtCoderに入門記事<a href="https://atcoder.jp/contests/APG4b">APG4b</a>がある．ほかには矢吹の紫本とか．）</li>
 </ul>
-<p>教科書・参考書の例</p>
+<p>非競技向けの教科書・参考書の例</p>
 <ul>
 <li>コーリー・アルソフ『独学コンピューターサイエンティスト :
 Pythonで学ぶアルゴリズムとデータ構造』（日経BP,
-2022）　『独学プログラマー』の書き方が好きな人にはお勧め．非競技向け（Python）</li>
-<li>米田優峻『競技プログラミングの鉄則 :
-アルゴリズム力と思考力を高める77の技術』（マイナビ出版, 2022）　<a href="https://atcoder.jp/contests/tessoku-book">自動採点システム</a>がある．基本的なデータ構造（スタックやキュー）やアルゴリズム（ソーティング）はライブラリに任せている．競技向け（C++，Python，Java）</li>
-<li>大槻兼資『問題解決力を鍛える!アルゴリズムとデータ構造』（講談社,
-2020）　競技向け（C++）</li>
+2022）　『独学プログラマー』の書き方が好きな人にはお勧め．（Python）</li>
 <li>石畑清『アルゴリズムとデータ構造』（岩波書店,
-1989）　バイブルだという人もいる．非競技向け（Pascal，C，Lisp）</li>
+1989）　バイブルだという人もいる．（Pascal，C，Lisp）</li>
+</ul>
+<p>競技向けの教科書・参考書の例（ほぼ難易度順）</p>
+<ul>
+<li>米田優峻『競技プログラミングの鉄則 :
+アルゴリズム力と思考力を高める77の技術』（マイナビ出版, 2022）　<a href="https://atcoder.jp/contests/tessoku-book">自動採点システム</a>がある．基本的なデータ構造（スタックやキュー）やアルゴリズム（ソーティング）はライブラリに任せている．（C++，Python，Java）</li>
+<li>大槻兼資『問題解決力を鍛える!アルゴリズムとデータ構造』（講談社,
+2020）　（C++）</li>
+<li>渡部有隆『プログラミングコンテスト攻略のためのアルゴリズムとデータ構造
+』（マイナビ, 2015）　自動採点システムがある．（C++）</li>
+<li>秋葉拓哉ほか『プログラミングコンテストチャレンジブック :
+問題解決のアルゴリズム活用力とコーディングテクニックを鍛える』（マイナビ,
+第2版, 2012）　通称「蟻本」．（C++）</li>
 </ul>
 <div id="準備" class="section level2" number="1">
 <h2><span class="header-section-number">1</span> 準備</h2>
@@ -1834,220 +1846,8 @@ print(&quot;All tests passed!&quot;)</code></pre>
 </div>
 </div>
 </div>
-<div id="アルゴリズム教科書第22章" class="section level2" number="4">
-<h2><span class="header-section-number">4</span>
-アルゴリズム（教科書第22章）</h2>
-<div id="fizzbuzz" class="section level3" number="4.1">
-<h3><span class="header-section-number">4.1</span> FizzBuzz</h3>
-<p><strong>課題</strong> <span class="math inline">\(1\)</span> から
-<span class="math inline">\(30\)</span>
-までの数字を出力するプログラムを書きなさい．ただし，<span class="math inline">\(3\)</span>
-の倍数のときは数字の代わりに<code>Fizz</code>と出力し，<span class="math inline">\(5\)</span>
-の倍数のときは数字の代わりに<code>Buzz</code>と出力する．そして，<span class="math inline">\(3\)</span> と <span class="math inline">\(5\)</span>
-の倍数のときは，<code>FizzBuzz</code>と出力すること．</p>
-</div>
-<div id="線形探索" class="section level3" number="4.2">
-<h3><span class="header-section-number">4.2</span> 線形探索</h3>
-<p><strong>課題</strong>
-整数のリスト<code>number_list</code>と整数<code>n</code>を引数として，<code>number_list</code>に<code>n</code>が含まれているかどうかを返す関数<code>ss</code>を定義せよ．練習のため，<code>number_list</code>についてのfor文を使うこと．テスト用のコードを示す．</p>
-<pre class="python"><code>def test_ss():
-    assert ss([3, 2, 5], 5) == True
-    assert ss([3, 2, 5], 4) == False
-    print(&quot;All tests passed!&quot;)</code></pre>
-<p>♠AtCoderのアカウントがある人は，<a href="https://atcoder.jp/contests/tessoku-book/tasks/tessoku_book_b" class="uri">https://atcoder.jp/contests/tessoku-book/tasks/tessoku_book_b</a>
-をやってみるのもよいだろう．データの入力方法（定型コード）を示す．</p>
-<pre class="python"><code>N, X = [int(x) for x in input().split()]
-A = [int(x) for x in input().split()]</code></pre>
-<div id="探索の高速化" class="section level4" number="4.2.1">
-<h4><span class="header-section-number">4.2.1</span> 探索の高速化</h4>
-<p><span class="math inline">\(1\)</span>以上<span class="math inline">\(10^8\)</span>以下の整数を<span class="math inline">\(10^7\)</span>個作り，リスト<code>data</code>とする．（まずは<span class="math inline">\(10^3\)</span>くらいで実験して，うまく行きそうなら<span class="math inline">\(10^8\)</span>にするとよい．）</p>
-<pre class="python"><code>import random
-data = [random.randint(1, 10**8) for _ in range(10**7)]</code></pre>
-<p><strong>課題</strong>
-1以上100以下の整数で，<code>data</code>に含まれるものの数を，<code>ss</code>を使って数えるときの，実行時間を計れ．</p>
-</div>
-<div id="高速化1inの使用" class="section level4" number="4.2.2">
-<h4><span class="header-section-number">4.2.2</span>
-高速化1（<code>in</code>の使用）</h4>
-<p><strong>課題</strong>
-1以上100以下の整数で，<code>data</code>に含まれるものの数を，<code>in</code>を使って数えるときの，実行時間を計れ．</p>
-</div>
-<div id="高速化2setの利用" class="section level4" number="4.2.3">
-<h4><span class="header-section-number">4.2.3</span>
-高速化2（setの利用）</h4>
-<p><strong>課題</strong>
-1以上100以下の整数で，<code>data</code>に含まれるものの数を，setを使って数えるときの，実行時間を計れ．（実行時間には，setに変換するのにかかる時間を含めること．）</p>
-</div>
-<div id="高速化3二分探索の利用" class="section level4" number="4.2.4">
-<h4><span class="header-section-number">4.2.4</span>
-高速化3（二分探索の利用）♠</h4>
-<p><code>bisect.bisect</code>の動作を調べる．</p>
-<pre class="python"><code>from bisect import bisect
-
-print(bisect([2, 3, 5], 1))</code></pre>
-<pre class="python"><code>print(bisect([2, 3, 5], 2))</code></pre>
-<pre class="python"><code>print(bisect([2, 3, 5], 4))</code></pre>
-<pre class="python"><code>print(bisect([2, 3, 5], 5))</code></pre>
-<pre class="python"><code>print(bisect([2, 3, 5], 6))</code></pre>
-<p><strong>課題</strong>
-昇順に並べ替えられた整数のリスト<code>number_list</code>と整数<code>n</code>を引数として，<code>number_list</code>に<code>n</code>が含まれているかどうかを返す関数<code>bs</code>を実装せよ．テスト用のコードを示す．</p>
-<pre class="python"><code>def test_bs():
-  assert bs([2, 3, 5], 1) == False
-  assert bs([2, 3, 5], 2) == True
-  assert bs([2, 3, 5], 4) == False
-  assert bs([2, 3, 5], 5) == True
-  assert bs([2, 3, 5], 6) == False
-  print(&quot;All tests passed!&quot;)</code></pre>
-<p><strong>課題</strong> <span class="math inline">\(1\)</span> 以上
-<span class="math inline">\(100\)</span>
-以下の整数で，<code>data</code>に含まれるものの数を，二分探索を使って数えるときの，実行時間を計れ．（実行時間には，リストを昇順に並べ替えるのにかかる時間を含めること．）</p>
-</div>
-</div>
-<div id="回文" class="section level3" number="4.3">
-<h3><span class="header-section-number">4.3</span> 回文</h3>
-<p><strong>課題</strong>
-英語のアルファベットからなる文字列<code>word</code>が回文かどうかを調べる関数<code>palindrome</code>を実装せよ．テスト用のコードを示す．ヒント：まず，全ての文字を小文字に変換する．</p>
-<pre class="python"><code>def test_palindrome():
-  assert palindrome(&quot;Mother&quot;) == False
-  assert palindrome(&quot;Mom&quot;) == True
-  assert palindrome(&quot;abcba&quot;) == True
-  print(&quot;All tests passed!&quot;)</code></pre>
-</div>
-<div id="アナグラム" class="section level3" number="4.4">
-<h3><span class="header-section-number">4.4</span> アナグラム</h3>
-<p><strong>課題</strong>
-英語のアルファベットからなる文字列<code>w1</code>と<code>w2</code>がアナグラムかどうかを調べる関数<code>anagram</code>を実装せよ．テスト用のコードを示す．</p>
-<pre class="python"><code>def test_anagram():
-  assert anagram(&quot;Iceman&quot;, &quot;cinema&quot;) == True
-  assert anagram(&quot;leaf&quot;, &quot;tree&quot;) == False
-  print(&quot;All tests passed!&quot;)</code></pre>
-</div>
-<div id="出現する文字列を数える復習" class="section level3" number="4.5">
-<h3><span class="header-section-number">4.5</span>
-出現する文字<del>列</del>を数える（復習）</h3>
-<p><strong>課題</strong>
-英語のアルファベットからなる文字列を表す変数<code>string</code>を与えると，それが表す文字列に含まれる各文字の出現回数を数える関数<code>count_characters</code>を，<code>collections.Counter</code>を使って実装せよ．テスト用のコードを示す．</p>
-<pre class="python"><code>def test_count_characters():
-  assert(count_characters(&quot;Dynasty&quot;)[&#39;D&#39;] == 1)
-  assert(count_characters(&quot;Dynasty&quot;)[&#39;y&#39;] == 2)
-  assert(count_characters(&quot;apple&quot;)[&#39;p&#39;] == 2)
-  assert(count_characters(&quot;apple pie&quot;)[&#39;p&#39;] == 3)
-  print(&quot;All tests passed!&quot;)</code></pre>
-<p><strong>課題</strong>
-関数<code>count_characters</code>を，辞書を使って実装せよ．</p>
-<p><strong>課題</strong>
-関数<code>count_characters</code>を，<code>collections.defaultdict(int)</code>を使って実装せよ．</p>
-</div>
-<div id="再帰" class="section level3" number="4.6">
-<h3><span class="header-section-number">4.6</span> 再帰</h3>
-<div id="再帰の基本" class="section level4" number="4.6.1">
-<h4><span class="header-section-number">4.6.1</span> 再帰の基本</h4>
-<p><strong>課題</strong> 正の整数 <span class="math inline">\(n\)</span>
-を与えると，<span class="math inline">\(n\)</span> から <span class="math inline">\(0\)</span>
-までカウントダウンする関数<code>countdown</code>を，再帰を使って実装せよ．実行例を示す．</p>
-<pre class="python"><code>countdown(5)</code></pre>
-<pre><code>5
-4
-3
-2
-1
-Zero!</code></pre>
-<p><strong>課題</strong>
-関数<code>countdown</code>を，ループを使って実装せよ．</p>
-</div>
-<div id="階乗" class="section level4" number="4.6.2">
-<h4><span class="header-section-number">4.6.2</span> 階乗</h4>
-<p><strong>課題</strong> 正の整数 <span class="math inline">\(n\)</span>
-の階乗を求める関数
-<code>f</code>を，再帰を使って実装せよ．テスト用のコードを示す．</p>
-<pre class="python"><code>def test_f():
-  assert f(0) == 1, f(0)
-  assert f(1) == 1, f(1)
-  assert f(2) == 2, f(2)
-  assert f(3) == 6, f(3)
-  assert f(4) == 24, f(4)
-  print(&quot;All tests passed!&quot;)</code></pre>
-<p><strong>課題</strong> 正の整数 <span class="math inline">\(n\)</span>
-の階乗を求める関数<code>f</code>を，ループを使って実装せよ．</p>
-</div>
-<div id="フィボナッチ数" class="section level4" number="4.6.3">
-<h4><span class="header-section-number">4.6.3</span> フィボナッチ数</h4>
-<p><strong>課題</strong> 次の漸化式の <span class="math inline">\(a_n\)</span>
-を，再帰を使って求める関数<code>fib</code>を実装せよ．テスト用のコードを示す．</p>
-<p><span class="math display">\[a_0=0,\qquad a_1=1,\qquad a_n =
-a_{n-1}+a_{n-2}\quad(n\ge 2)\]</span></p>
-<pre class="python"><code>def test_fib():
-  assert fib(0) == 0, f&#39;0 0 {fib(0)}&#39;
-  assert fib(1) == 1, f&#39;1 1 {fib(1)}&#39;
-  assert fib(2) == 1, f&#39;2 1 {fib(2)}&#39;
-  assert fib(3) == 2, f&#39;3 2 {fib(3)}&#39;
-  assert fib(4) == 3, f&#39;4 3 {fib(4)}&#39;
-  assert fib(5) == 5, f&#39;5 4 {fib(5)}&#39;
-  print(&quot;All tests passed!&quot;)</code></pre>
-<div id="メモ化" class="section level5" number="4.6.3.1">
-<h5><span class="header-section-number">4.6.3.1</span> メモ化</h5>
-<p>「<code>%time fib(36)</code>」などとするとわかるが，この<code>fib</code>はとても遅い．一度計算した値を保存しておくことで，計算時間を短縮できる．</p>
-<pre class="python"><code>from functools import cache
-@cache
-関数定義</code></pre>
-<p><strong>課題</strong> <span class="math inline">\(a_n\)</span>
-を，再帰とメモ化を使って求める関数<code>fib</code>を実装して，<span class="math inline">\(a_{36}\)</span>を得るのにかかる時間を，メモ化を使わない場合と比較せよ．</p>
-</div>
-<div id="ループ" class="section level5" number="4.6.3.2">
-<h5><span class="header-section-number">4.6.3.2</span> ループ</h5>
-<p><strong>課題</strong> <span class="math inline">\(a_n\)</span>を，ループを使って求める関数<code>fib</code>を実装して，<span class="math inline">\(a_{36}\)</span>を得るのにかかる時間を，前の場合と比較せよ．</p>
-</div>
-<div id="漸化式の解" class="section level5" number="4.6.3.3">
-<h5><span class="header-section-number">4.6.3.3</span> 漸化式の解♠</h5>
-<p>高校数学で習う方法で三項間漸化式を解くと， <span class="math display">\[a_n=\frac{\alpha^n-\beta^n}{\alpha-\beta}\]</span>
-になる．ここで <span class="math inline">\(\alpha=\dfrac{1+\sqrt
-5}{2}\)</span>, <span class="math inline">\(\beta=\dfrac{1-\sqrt
-5}{2}\)</span> で，<span class="math inline">\(\alpha\)</span>
-を黄金比という．</p>
-<p>補足：WolframAlphaで<a href="https://www.wolframalpha.com/input?i=a%5B0%5D%3D0%2Ca%5B1%5D%3D1%2Ca%5Bn%5D%3Da%5Bn-1%5D%2Ba%5Bn-2%5D&amp;lang=ja">「<code>a[0]=0,a[1]=1,a[n]=a[n-1]+a[n-2]</code>」</a>として，「<span class="math inline">\(a_n=F_n\)</span>」を得る（<span class="math inline">\(F_n\)</span> は <span class="math inline">\(n\)</span>
-番目のフィボナッチ数）．面白い結果ではない．</p>
-<p><strong>課題</strong> <span class="math inline">\(a_n\)</span>
-を，漸化式の解を使って求める関数<code>fib</code>を実装せよ．</p>
-</div>
-<div id="行列" class="section level5" number="4.6.3.4">
-<h5><span class="header-section-number">4.6.3.4</span> 行列♠</h5>
-<p>行列を使うと， <span class="math display">\[\begin{bmatrix}
-a_{n+1} \\
-a_n\end{bmatrix}
-=\begin{bmatrix}
-1 &amp; 1\\
-1 &amp; 0\end{bmatrix}
-\begin{bmatrix}
-a_n \\
-a_{n-1}\end{bmatrix}
-=A\begin{bmatrix}
-a_n \\
-a_{n-1}\end{bmatrix}
-=A^n\begin{bmatrix}
-a_1 \\
-a_0\end{bmatrix}
-=A^n\begin{bmatrix}
-1 \\
-0\end{bmatrix}\quad(A=\begin{bmatrix}
-1 &amp; 1\\
-1 &amp; 0\end{bmatrix})\]</span> だから，<span class="math inline">\(\displaystyle A^n\begin{bmatrix}
-1 \\
-0\end{bmatrix}\)</span> の第 <span class="math inline">\(2\)</span>
-成分（<span class="math inline">\(A^n\)</span> の <span class="math inline">\((2,1)\)</span> 成分）が <span class="math inline">\(a_n\)</span> である．</p>
-<p><strong>課題</strong> <span class="math inline">\(a_n\)</span>
-を，行列を使って求める関数<code>fib</code>を実装せよ．<span class="math inline">\(A^n\)</span> は <span class="math inline">\(A\)</span>
-を対角化して求めてもよいが，ここではコンピュータで直接計算しよう．</p>
-<p>対角化については，長崎憲一, 横山利章『明解線形代数』（培風館,
-2024）を参照．</p>
-<p>補足：WolframAlphaで<a href="https://www.wolframalpha.com/input?i=diagonalize+%7B%7B1%2C1%7D%2C%7B1%2C0%7D%7D&amp;lang=ja">「<code>diagonalize {{1,1},{1,0}}</code>」</a>として対角化の結果を得る．対角化できない場合でも，本文の方法は有効である．例：<span class="math inline">\(a_0=1, a_1=8, a_n=6a_{n-1}-9a_{n-1}\,(n\ge
-2)\)</span> のとき，<span class="math inline">\(a_n=3^{n-1}(5n+3)\)</span>
-である．WolframAlphaで<a href="https://www.wolframalpha.com/input?i=a%5B0%5D%3D1%2Ca%5B1%5D%3D8%2Ca%5Bn%5D%3D6a%5Bn-1%5D-9a%5Bn-2%5D&amp;lang=ja">「<code>a[0]=1,a[1]=8,a[n]=6a[n-1]-9a[n-2]</code>」</a>として確認できる．</p>
-</div>
-</div>
-</div>
-</div>
-<div id="補足" class="section level2" number="5">
-<h2><span class="header-section-number">5</span> 補足</h2>
+<div id="補足" class="section level2" number="4">
+<h2><span class="header-section-number">4</span> 補足</h2>
 <p><strong>課題</strong>
 これまでの課題について，気になったことを新たな<strong>課題</strong>とし，調べて解決せよ。良い課題は，来年の演習で採用する（作問者名掲載）。</p>
 <p><strong>課題</strong>
