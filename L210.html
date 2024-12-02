@@ -11,7 +11,7 @@
 
 
 
-<title>L209</title>
+<title>L210</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1477,7 +1477,7 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore">L209</h1>
+<h1 class="title toc-ignore">L210</h1>
 
 </div>
 
@@ -1489,266 +1489,501 @@ border-radius: 0px;
 <p><strong>新しいノートブックは作らない．</strong>前回作業したノートブックは，Google
 Driveの「マイドライブ/Colab
 Notebooks」に保存されているはず．それを開いて再開する．</p>
-<div id="アルゴリズム教科書第22章" class="section level2" number="1">
-<h2><span class="header-section-number">1</span>
-アルゴリズム（教科書第22章）</h2>
-<div id="fizzbuzz" class="section level3" number="1.1">
-<h3><span class="header-section-number">1.1</span> FizzBuzz</h3>
-<p><strong>課題</strong> FizzBuzz</p>
-<blockquote>
-<p><span class="math inline">\(1\)</span> から <span class="math inline">\(100\)</span>
-までの数字を出力するプログラムを書きなさい．ただし，<span class="math inline">\(3\)</span>
-の倍数のときは数字の代わりに<code>Fizz</code>と出力し，<span class="math inline">\(5\)</span>
-の倍数のときは数字の代わりに<code>Buzz</code>と出力する．そして，<span class="math inline">\(3\)</span> と <span class="math inline">\(5\)</span>
-の倍数のときは，<code>FizzBuzz</code>と出力すること．</p>
-</blockquote>
-<blockquote>
-<p>Write a program that prints the numbers from 1 to 100. But for
-multiples of three print “Fizz” instead of the number, and for the
-multiples of five print “Buzz.” For multiples of both three and five
-print “FizzBuzz.”</p>
-</blockquote>
+<div id="コンテナ" class="section level2" number="1">
+<h2><span class="header-section-number">1</span> コンテナ</h2>
+<p><strong>ローカル環境のターミナル（PowerShell等）で実行する．課題の回答はGoogle
+Colabのノートブックに書く．</strong></p>
+<p>以下の作業で作るファイルをまとめておく．</p>
+<pre><code>.
+├── Dockerfile     # 独自のイメージ（その1）
+├── FizzBuzz.java  # Java
+├── fizzbuzz.c     # C言語
+├── fizzbuzz.cc    # C++
+├── fizzbuzz.py    # Python
+├── hello.html     # Webサーバ
+└── tex            # LaTeX用のフォルダ
+    ├── Dockerfile # 独自のイメージ（その2）
+    ├── latexmkrc  # 組版方法
+    ├── main.tex   # 原稿
+    └── refs.bib   # 文献</code></pre>
+<div id="基本編" class="section level3" number="1.1">
+<h3><span class="header-section-number">1.1</span> 基本編</h3>
+<div id="イメージの取得と削除" class="section level4" number="1.1.1">
+<h4><span class="header-section-number">1.1.1</span>
+イメージの取得と削除</h4>
+<ul>
+<li>イメージの取得：<code>docker pull イメージ名</code></li>
+<li>イメージの削除：<code>docker rmi イメージ名</code>あるいは<code>docker rmi イメージID</code></li>
+<li>イメージの一覧：<code>docker images</code></li>
+</ul>
+<p><strong>課題</strong>
+イメージ<code>hello-world</code>を取得するコマンドは何か．そのコマンドと実行結果を報告せよ．</p>
+<p><strong>課題</strong>
+イメージ<code>ubuntu</code>を取得せよ．（削除してもよいが，後で使うからそのままにしてもよい．）</p>
+<p><strong>イメージには大きいもの（数GB）もある．使わないイメージを残しておくと，ディスクがいっぱいになる危険がある．不要なイメージが残っていないかを<code>docker images</code>で確認するとよい．</strong></p>
 </div>
-<div id="線形探索" class="section level3" number="1.2">
-<h3><span class="header-section-number">1.2</span> 線形探索</h3>
+<div id="コンテナの構築と削除" class="section level4" number="1.1.2">
+<h4><span class="header-section-number">1.1.2</span>
+コンテナの構築と削除</h4>
+<ul>
+<li>コンテナの構築：<code>docker run イメージ名</code></li>
+<li>コンテナの削除：<code>docker rm -f コンテナID</code>あるいは<code>docker rm -f コンテナ名</code></li>
+<li>コンテナの一覧：<code>docker ps -a</code></li>
+</ul>
+<p>ローカルにイメージがない場合，取得される．つまり，<code>docker run</code>は<code>docker pull</code>を兼ねている．だから，イメージを取得していない場合，最初にイメージを取得するための時間がかかる．ただし，<code>docker pull</code>では常に取得が試みられるが，<code>docker run</code>では古いイメージがある場合には取得は試みられない．</p>
 <p><strong>課題</strong>
-整数のリスト<code>number_list</code>と整数<code>n</code>を引数として，<code>number_list</code>に<code>n</code>が含まれているかどうかを返す関数<code>ss</code>を定義せよ．練習のため，<code>number_list</code>についてのfor文を使うこと．テスト用のコードを示す．</p>
-<pre class="python"><code>def test_ss():
-  assert ss([3, 2, 5], 5) == True, f&#39;Expected True, but got {ss([3, 2, 5], 5)}&#39;
-  assert ss([3, 2, 5], 4) == False, f&#39;Expected False, but got {ss([3, 2, 5], 4)}&#39;
-  print(&quot;All tests passed!&quot;)</code></pre>
-<p>♠AtCoderのアカウントがある人は，<a href="https://atcoder.jp/contests/tessoku-book/tasks/tessoku_book_b" class="uri">https://atcoder.jp/contests/tessoku-book/tasks/tessoku_book_b</a>
-をやってみるのもよいだろう．データの入力方法（定型コード）を示す．</p>
-<pre class="python"><code>N, X = [int(x) for x in input().split()]
-A = [int(x) for x in input().split()]</code></pre>
-<div id="探索の高速化" class="section level4" number="1.2.1">
-<h4><span class="header-section-number">1.2.1</span> 探索の高速化</h4>
-<p><span class="math inline">\(1\)</span> 以上 <span class="math inline">\(10^8\)</span> 以下の整数を <span class="math inline">\(10^7\)</span>
-個作り，リスト<code>data</code>とする．（まずは <span class="math inline">\(m=10^3\)</span>，<span class="math inline">\(n=10^2\)</span>
-くらいで実験して，うまく行きそうなら <span class="math inline">\(10^8\)</span> にするとよい．）</p>
-<pre class="python"><code>import random
-m, n = 10**8, 10**7
-# m, n = 10**3, 10**2
-data = [random.randint(1, m) for _ in range(n)]</code></pre>
+イメージ<code>hello-world</code>のコンテナを構築し，結果を報告せよ．</p>
 <p><strong>課題</strong>
-1以上100以下の整数で，<code>data</code>に含まれるものの数を，<code>ss</code>を使って数えるときの，実行時間を計れ．（Google
-Colabでは，1行目に「<code>%%time</code>」と記述することで，セルの実行時間を計れる．）</p>
-<div id="高速化1inの使用" class="section level5" number="1.2.1.1">
-<h5><span class="header-section-number">1.2.1.1</span>
-高速化1（<code>in</code>の使用）</h5>
+前の課題で作ってコンテナを削除するコマンドを報告せよ．</p>
+<p>コンテナが停止したら自動的に削除する：<code>docker run --rm イメージ名</code></p>
 <p><strong>課題</strong>
-1以上100以下の整数で，<code>data</code>に含まれるものの数を，<code>in</code>を使って数えるときの，実行時間を計れ．</p>
+イメージ<code>hello-world</code>のコンテナを構築するコマンドを報告せよ．ただし，停止時に自動的に削除されるようにすること．また，実際に削除されていることを確認する方法と，その実行結果を報告せよ．</p>
+<div id="名前付きのコンテナ" class="section level5" number="1.1.2.1">
+<h5><span class="header-section-number">1.1.2.1</span>
+名前付きのコンテナ</h5>
+<ul>
+<li>名前付きのコンテナの構築：<code>docker run --name コンテナ名 イメージ名</code></li>
+<li>名前付きのコンテナの削除：<code>docker rm -f コンテナ名</code></li>
+</ul>
+<p><strong>課題</strong>
+同じ名前のコンテナを二つ構築しようとするとどうなるか．表示されるエラーメッセージの内容を日本語で報告せよ．</p>
 </div>
-<div id="高速化2setの利用" class="section level5" number="1.2.1.2">
-<h5><span class="header-section-number">1.2.1.2</span>
-高速化2（setの利用）</h5>
-<p><strong>課題</strong>
-1以上100以下の整数で，<code>data</code>に含まれるものの数を，setを使って数えるときの，実行時間を計れ．（実行時間には，setに変換するのにかかる時間を含めること．）</p>
 </div>
-<div id="高速化3二分探索の利用" class="section level5" number="1.2.1.3">
-<h5><span class="header-section-number">1.2.1.3</span>
-高速化3（二分探索の利用）♠</h5>
-<p><code>bisect.bisect</code>の動作を調べる．</p>
-<pre class="python"><code>from bisect import bisect
+<div id="ポートの共有" class="section level4" number="1.1.3">
+<h4><span class="header-section-number">1.1.3</span> ポートの共有</h4>
+<ul>
+<li>ホストのポートaとコンテナのポートbを対応付ける：<code>docker run -p a:b イメージ名</code></li>
+</ul>
+<p><strong>課題</strong> 次のシナリオの結果を報告せよ．</p>
+<ol style="list-style-type: decimal">
+<li>Apache HTTP
+Serverのイメージ<code>httpd</code>をもとにコンテナを構築する．<code>docker run -p 8080:80 httpd</code></li>
+<li><a href="http://localhost:8080" class="uri">http://localhost:8080</a> にアクセスする．</li>
+<li>ターミナルでCtrl-cでコンテナを停止する．</li>
+<li><a href="http://localhost:8080" class="uri">http://localhost:8080</a> にアクセスする．</li>
+<li>ターミナルで<code>docker start コンテナID</code>でコンテナを開始する．（<code>docker start -i コンテナID</code>でもよい．）</li>
+<li><a href="http://localhost:8080" class="uri">http://localhost:8080</a> にアクセスする．</li>
+<li>コンテナを削除する．</li>
+<li><a href="http://localhost:8080" class="uri">http://localhost:8080</a> にアクセスする．</li>
+</ol>
+<p>補足：ポートの対応を確認するために敢えて8080を使っているが，通常は<code>-p 80:80</code>でよい．その場合は，<a href="http://localhost" class="uri">http://localhost</a>
+のようにポートを省略できる．</p>
+<p><strong>課題</strong>
+ホスト側の同じポートに複数のコンテナを対応付けようとするとどうなるか．表示されるエラーメッセージの内容を日本語で説明せよ．</p>
+</div>
+<div id="標準入力とターミナル" class="section level4" number="1.1.4">
+<h4><span class="header-section-number">1.1.4</span>
+標準入力とターミナル</h4>
+<ul>
+<li>標準入力とターミナルを有効にする：<code>docker run -it イメージ名</code></li>
+</ul>
+<p><strong>課題</strong>
+イメージ<code>ubuntu</code>のコンテナ内で，Apache HTTP
+Serverをインストールし，<a href="http://localhost" class="uri">http://localhost</a>
+でページを閲覧できるようにするためのコマンド（<code>docker run...</code>）を報告せよ．ヒント：コンテナ内で次の作業を行うと，Apacheが起動する．</p>
+<pre class="bash"><code>apt update            # パッケージリストの更新
+apt install apache2   # Apacheのインストール
+service apache2 start # Apacheの起動
+exit                  # 終了（コンテナが停止する）</code></pre>
+<p>「<code>--rm</code>」を付けていなければ，停止したコンテナを<code>docker start コンテナID</code>で再開できる．</p>
+<p><strong>補足：コンテナ内で作業したいときは，VS Codeの拡張機能Dev
+Containersで接続するのが簡単だから，試してみるとよい．</strong></p>
+</div>
+<div id="コマンド実行" class="section level4" number="1.1.5">
+<h4><span class="header-section-number">1.1.5</span> コマンド実行</h4>
+<ul>
+<li><code>docker run -it イメージ名 コマンド</code></li>
+</ul>
+<p><strong>シナリオ</strong>　ターミナルで使う代表的なHTTPクライアントにcurlとwgetがある．簡単な使い方は<code>curl -s URL</code>や<code>wget -q -O - URL</code>．これでURLに対してGETが実行される．Windowsのcurlとwgetは標準的なものではないため，Unixのcurlとwgetを使いたい．</p>
+<p><strong>課題</strong>
+イメージ<code>curlimages/curl</code>を使って，<a href="http://example.net" class="uri">http://example.net</a>
+を取得する方法と，その結果を報告せよ．</p>
+<p><strong>課題</strong> イメージ<code>busybox</code>のwgetを使って，<a href="http://example.net" class="uri">http://example.net</a>
+を取得する方法と，その結果を報告せよ．</p>
+</div>
+<div id="フォルダの共有" class="section level4" number="1.1.6">
+<h4><span class="header-section-number">1.1.6</span> フォルダの共有</h4>
+<ul>
+<li>ホストのフォルダAとコンテナのフォルダBを共有する：<code>docker run -v &quot;フォルダA:フォルダB&quot; イメージ名</code>
+<ul>
+<li>フォルダAは，カレントディレクトリ<code>$(pwd)</code>とする．</li>
+<li>フォルダBは，使用するイメージで決められたフォルダ，あるいは使いやすい作業フォルダを指定する．</li>
+</ul></li>
+</ul>
+<p>補足：「<code>$(コマンド)</code>」はコマンドの実行結果で置き換えられる．pwdはカレントディレクトリを得るコマンドだから，「<code>$(pwd)</code>」はカレントディレクトリのパスになる．</p>
+<p>イメージ<code>httpd</code>のウェブサーバのドキュメントルートは
+/usr/local/apache2/htdocs
+である（ドキュメントルート：公開するフォルダの基点）．そういうことは，<a href="https://hub.docker.com/_/httpd">ドキュメント</a>を読むとわかる．</p>
+<p>次のような内容のファイルhello.htmlを作り，<a href="http://localhost/hello.html" class="uri">http://localhost/hello.html</a> で閲覧できるようにする．</p>
+<pre class="html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;title&gt;hello&lt;/title&gt;
+  &lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;hello, world&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p><strong>課題</strong> 次のシナリオの結果を報告せよ．</p>
+<ol style="list-style-type: decimal">
+<li>ファイルのある場所でターミナルを起動する（エクスプローラのアドレスバーに「<code>powershell</code>」や「<code>bash</code>」と入力する）．</li>
+<li><code>docker run --rm -p 80:80 -v &quot;$(pwd):/usr/local/apache2/htdocs&quot; httpd</code></li>
+<li>ブラウザで <a href="http://localhost/hello.html" class="uri">http://localhost/hello.html</a> を閲覧する．</li>
+<li>ターミナルでCtrl-cとしてコンテナを停止させる．</li>
+</ol>
+</div>
+</div>
+<div id="応用編" class="section level3" number="1.2">
+<h3><span class="header-section-number">1.2</span> 応用編</h3>
+<div id="python" class="section level4" number="1.2.1">
+<h4><span class="header-section-number">1.2.1</span> Python</h4>
+<p><strong>シナリオ</strong>　（Google
+Colabなどではなく）ローカル環境で，PythonでによるFizzBuzz（1から30まで）の結果をfizzbuzz.datに格納したい．そのために，FizzBuzzのプログラムをfizzbuzz.pyに書いておいて，<code>python3 fizzbuzz.py &gt; fizzbuzz.dat</code>を実行する．ただし，Pythonの処理系をOSに直接インストールすることは避けたい．また，誰がやっても同じになるように環境を統一したい．そこで，コンテナを使う．</p>
+<p><strong>課題</strong>
+イメージ<code>python</code>を使って解決する方法を説明せよ．</p>
+<p>ヒント：fizzbuzz.pyを用意して，<code>docker run --rm -it -v &quot;$(pwd):/root/work&quot; python bash</code>でコンテナを構築，<code>cd ~/work</code>として/root/workに移動してから，<code>python fizzbuzz.py &gt; fizzbuzz.dat</code>，<code>exit</code>で終了．</p>
+<p><strong>課題</strong>
+イメージ<code>ubuntu</code>を使って解決する方法を説明せよ．ヒント：Pythonは<code>apt update &amp;&amp; apt install python3 python-is-python3 -y</code>でインストールできる．（途中で地域を聞かれたら適当に答える．）</p>
+</div>
+<div id="c言語" class="section level4" number="1.2.2">
+<h4><span class="header-section-number">1.2.2</span> C言語</h4>
+<p><strong>シナリオ</strong>　次のC言語のプログラムを実行したい．ただし，C言語の処理系をOSに直接インストールすることは避けたい．また，誰がやっても同じになるように環境を統一したい．そこで，コンテナを使う．</p>
+<pre class="c"><code>#include &lt;stdio.h&gt;
 
-print(bisect([2, 3, 5], 1))
-print(bisect([2, 3, 5], 2))
-print(bisect([2, 3, 5], 4))
-print(bisect([2, 3, 5], 5))
-print(bisect([2, 3, 5], 6))</code></pre>
+int main() {
+  for (int i = 1; i &lt;= 30; i++) {
+    int f = i % 3;
+    int b = i % 5;
+    if (f == 0) printf(&quot;Fizz&quot;);
+    if (b == 0) printf(&quot;Buzz&quot;);
+    if (f != 0 &amp;&amp; b != 0) printf(&quot;%d&quot;, i);
+    printf(&quot;\n&quot;);
+  }
+}</code></pre>
 <p><strong>課題</strong>
-昇順に並べ替えられた整数のリスト<code>number_list</code>と整数<code>n</code>を引数として，<code>number_list</code>に<code>n</code>が含まれているかどうかを返す関数<code>bs</code>を実装せよ．テスト用のコードを示す．</p>
-<pre class="python"><code>def test_bs():
-  assert bs([2, 3, 5], 1) == False, f&#39;Expected False, but got {bs([2, 3, 5], 1)}&#39;
-  assert bs([2, 3, 5], 2) == True, f&#39;Expected True, but got {bs([2, 3, 5], 2)}&#39;
-  assert bs([2, 3, 5], 4) == False, f&#39;Expected False, but got {bs([2, 3, 5], 4)}&#39;
-  assert bs([2, 3, 5], 5) == True, f&#39;Expected True, but got {bs([2, 3, 5], 5)}&#39;
-  assert bs([2, 3, 5], 6) == False, f&#39;Expected False, but got {bs([2, 3, 5], 6)}&#39;
-  print(&quot;All tests passed!&quot;)</code></pre>
-<p><strong>課題</strong> <span class="math inline">\(1\)</span> 以上
-<span class="math inline">\(100\)</span>
-以下の整数で，<code>data</code>に含まれるものの数を，二分探索を使って数えるときの，実行時間を計れ．（実行時間には，リストを昇順に並べ替えるのにかかる時間を含めること．）</p>
-</div>
-</div>
-</div>
-<div id="回文" class="section level3" number="1.3">
-<h3><span class="header-section-number">1.3</span> 回文</h3>
+イメージ<code>gcc</code>を使って解決する方法を説明せよ．（GCCはGNU
+Compiler Collectionのこと）</p>
+<p>ヒント：Cのコードがファイルfizzbuzz.cに記述されているとすると，次のようにしてコンパイル，実行できる．</p>
+<pre class="bash"><code>gcc fizzbuzz.c # コンパイル
+./a.out        # 実行</code></pre>
 <p><strong>課題</strong>
-英語のアルファベットからなる文字列<code>word</code>が回文かどうかを調べる関数<code>palindrome</code>を実装せよ．テスト用のコードを示す．ヒント：まず，全ての文字を小文字に変換する．</p>
-<pre class="python"><code>def test_palindrome():
-  assert palindrome(&quot;Mother&quot;) == False, f&#39;Expected False, but got {palindrome(&quot;Mother&quot;)}&#39;
-  assert palindrome(&quot;Mom&quot;) == True, f&#39;Expected True, but got {palindrome(&quot;Mom&quot;)}&#39;
-  assert palindrome(&quot;abcba&quot;) == True, f&#39;Expected True, but got {palindrome(&quot;abcba&quot;)}&#39;
-  print(&quot;All tests passed!&quot;)</code></pre>
+イメージ<code>ubuntu</code>を使って解決する方法を説明せよ．ヒント：GCCは<code>apt update &amp;&amp; apt install gcc -y</code>でインストールできる．</p>
 </div>
-<div id="アナグラム" class="section level3" number="1.4">
-<h3><span class="header-section-number">1.4</span> アナグラム</h3>
-<p><strong>課題</strong>
-英語のアルファベットからなる文字列<code>w1</code>と<code>w2</code>がアナグラムかどうかを調べる関数<code>anagram</code>を実装せよ．テスト用のコードを示す．</p>
-<pre class="python"><code>def test_anagram():
-  assert anagram(&quot;Iceman&quot;, &quot;cinema&quot;) == True, f&#39;Expected True, but got {anagram(&quot;Iceman&quot;, &quot;cinema&quot;)}&#39;
-  assert anagram(&quot;leaf&quot;, &quot;tree&quot;) == False, f&#39;Expected False, but got {anagram(&quot;leaf&quot;, &quot;tree&quot;)}&#39;
-  print(&quot;All tests passed!&quot;)</code></pre>
-</div>
-<div id="出現する文字列を数える復習" class="section level3" number="1.5">
-<h3><span class="header-section-number">1.5</span>
-出現する文字<del>列</del>を数える（復習）</h3>
-<p><strong>課題</strong>
-英語のアルファベットからなる文字列を表す変数<code>string</code>を与えると，それが表す文字列に含まれる各文字の出現回数を数える関数<code>count_characters</code>を，<code>collections.Counter</code>を使って実装せよ．テスト用のコードを示す．</p>
-<pre class="python"><code>def test_count_characters():
-  assert count_characters(&quot;Dynasty&quot;)[&#39;D&#39;] == 1, f&#39;Expected 1, but got {count_characters(&quot;Dynasty&quot;)[&quot;D&quot;]}&#39;
-  assert count_characters(&quot;Dynasty&quot;)[&#39;y&#39;] == 2, f&#39;Expected 2, but got {count_characters(&quot;Dynasty&quot;)[&quot;y&quot;]}&#39;
-  assert count_characters(&quot;apple&quot;)[&#39;p&#39;] == 2, f&#39;Expected 2, but got {count_characters(&quot;apple&quot;)[&quot;p&quot;]}&#39;
-  assert count_characters(&quot;apple pie&quot;)[&#39;p&#39;] == 3, f&#39;Expected 3, but got {count_characters(&quot;apple pie&quot;)[&quot;p&quot;]}&#39;
-  print(&quot;All tests passed!&quot;)</code></pre>
-<p><strong>課題</strong>
-関数<code>count_characters</code>を，辞書を使って実装せよ．</p>
-<p><strong>課題</strong>
-関数<code>count_characters</code>を，<code>collections.defaultdict(int)</code>を使って実装せよ．</p>
-</div>
-<div id="再帰" class="section level3" number="1.6">
-<h3><span class="header-section-number">1.6</span> 再帰</h3>
-<div id="再帰の基本" class="section level4" number="1.6.1">
-<h4><span class="header-section-number">1.6.1</span> 再帰の基本</h4>
-<p><strong>課題</strong> 正の整数 <span class="math inline">\(n\)</span>
-を与えると，<span class="math inline">\(n\)</span> から <span class="math inline">\(0\)</span>
-までカウントダウンする関数<code>countdown</code>を，再帰を使って実装せよ．実行例を示す．</p>
-<pre class="python"><code>countdown(5)</code></pre>
-<pre><code>5
-4
-3
-2
-1
-Zero!</code></pre>
-<p><strong>課題</strong>
-関数<code>countdown</code>を，ループを使って実装せよ．</p>
-</div>
-<div id="階乗" class="section level4" number="1.6.2">
-<h4><span class="header-section-number">1.6.2</span> 階乗</h4>
-<p><strong>課題</strong> 正の整数 <span class="math inline">\(n\)</span>
-の階乗を，再帰を使って求める関数
-<code>f</code>を実装せよ．テスト用のコードを示す．</p>
-<pre class="python"><code>def test_f():
-  assert f(0) == 1, f&#39;Expected 1, but got {f(0)}&#39;
-  assert f(1) == 1, f&#39;Expected 1, but got {f(1)}&#39;
-  assert f(2) == 2, f&#39;Expected 2, but got {f(2)}&#39;
-  assert f(3) == 6, f&#39;Expected 6, but got {f(3)}&#39;
-  assert f(4) == 24, f&#39;Expected 24, but got {f(4)}&#39;
-  print(&quot;All tests passed!&quot;)</code></pre>
-<p><strong>課題</strong> 正の整数 <span class="math inline">\(n\)</span>
-の階乗を，ループを使って求める関数<code>f</code>を実装せよ．</p>
-</div>
-<div id="フィボナッチ数" class="section level4" number="1.6.3">
-<h4><span class="header-section-number">1.6.3</span> フィボナッチ数</h4>
-<blockquote>
-<p>さて，ここで，特別な数列，たぶん最も楽しい数列，フィボナッチ数列
-<span class="math inline">\(\langle F_n\rangle\)</span>
-の出番がやってきた．Graham, Knuth,
-Patashnik『コンピュータの数学』（共立出版）</p>
-</blockquote>
-<p><strong>課題</strong> 次の漸化式の <span class="math inline">\(a_n\)</span>
-を，再帰を使って求める関数<code>fib</code>を実装せよ．テスト用のコードを示す．</p>
-<p><span class="math display">\[a_0=0,\qquad a_1=1,\qquad a_n =
-a_{n-1}+a_{n-2}\quad(n\ge 2)\]</span></p>
-<pre class="python"><code>def test_fib():
-  assert fib(0) == 0, f&#39;Expected 0, but got {fib(0)}&#39;
-  assert fib(1) == 1, f&#39;Expected 1, but got {fib(1)}&#39;
-  assert fib(2) == 1, f&#39;Expected 1, but got {fib(2)}&#39;
-  assert fib(3) == 2, f&#39;Expected 2, but got {fib(3)}&#39;
-  assert fib(4) == 3, f&#39;Expected 3, but got {fib(4)}&#39;
-  assert fib(5) == 5, f&#39;Expected 5, but got {fib(5)}&#39;
-  print(&quot;All tests passed!&quot;)</code></pre>
-<div id="メモ化" class="section level5" number="1.6.3.1">
-<h5><span class="header-section-number">1.6.3.1</span> メモ化</h5>
-<p>「<code>%time fib(36)</code>」などとするとわかるが，この<code>fib</code>はとても遅い．原因は，同じものを何度も計算することにある．<code>fib(6)</code>を計算する様子を示す．</p>
-<pre><code>fib(6) -&gt; 8
-  fib(5) -&gt; 5
-    fib(4) -&gt; 3
-      fib(3) -&gt; 2
-        fib(2) -&gt; 1
-          fib(1) = 1
-          fib(0) = 0
-        fib(1) = 1
-      fib(2) -&gt; 1
-        fib(1) = 1
-        fib(0) = 0
-    fib(3) -&gt; 2
-      fib(2) -&gt; 1
-        fib(1) = 1
-        fib(0) = 0
-      fib(1) = 1
-  fib(4) -&gt; 3
-    fib(3) -&gt; 2
-      fib(2) -&gt; 1
-        fib(1) = 1
-        fib(0) = 0
-      fib(1) = 1
-    fib(2) -&gt; 1
-      fib(1) = 1
-      fib(0) = 0</code></pre>
-<p><strong>課題</strong> 計算した結果を辞書に保存するようにして，<span class="math inline">\(a_{36}\)</span>を得るのにかかる時間を求めて，メモ化を使わない場合と比較せよ．</p>
-<p>メモ化のためのパッケージもある．</p>
-<pre class="python"><code>from functools import cache
+<div id="c" class="section level4" number="1.2.3">
+<h4><span class="header-section-number">1.2.3</span> C++</h4>
+<p><strong>シナリオ</strong>　次のC++のプログラムを実行したい．ただし，C++の処理系をOSに直接インストールすることは避けたい．また，誰がやっても同じになるように環境を統一したい．そこで，コンテナを使う．</p>
+<pre class="cpp"><code>#include &lt;iostream&gt;
+using namespace std;
 
-@cache
-関数定義</code></pre>
+int main() {
+  for (int i = 1; i &lt;= 30; i++) {
+    int f = i % 3;
+    int b = i % 5;
+    if (f == 0) cout &lt;&lt; &quot;Fizz&quot;;
+    if (b == 0) cout &lt;&lt; &quot;Buzz&quot;;
+    if (f != 0 &amp;&amp; b != 0) cout &lt;&lt; i;
+    cout &lt;&lt; endl;
+  }
+}</code></pre>
 <p><strong>課題</strong>
-<code>@cache</code>を使った関数<code>fib</code>で，<span class="math inline">\(a_{36}\)</span>を得るのにかかる時間を求めて，メモ化を使わない場合と比較せよ．</p>
+イメージ<code>gcc</code>を使って解決する方法を説明せよ．</p>
+<p>ヒント：C++のコードがファイルfizzbuzz.ccに記述されているとすると，次のようにしてコンパイル，実行できる．</p>
+<pre class="bash"><code>g++ fizzbuzz.cc # コンパイル
+./a.out         # 実行</code></pre>
+<p><strong>課題</strong>
+イメージ<code>ubuntu</code>を使って解決する方法を説明せよ．ヒント：GCCは<code>apt update &amp;&amp; apt install g++ -y</code>でインストールできる．</p>
 </div>
-<div id="ループ" class="section level5" number="1.6.3.2">
-<h5><span class="header-section-number">1.6.3.2</span> ループ</h5>
-<p><strong>課題</strong> <span class="math inline">\(a_n\)</span>を，ループを使って求める関数<code>fib</code>を実装し，<span class="math inline">\(a_{36}\)</span>を得るのにかかる時間を求めて，前の場合と比較せよ．</p>
+<div id="java" class="section level4" number="1.2.4">
+<h4><span class="header-section-number">1.2.4</span> Java</h4>
+<p><strong>シナリオ</strong>　次のJavaのプログラムを実行したい．ただし，JDK（Java
+Development
+Kit）をOSに直接インストールすることは避けたい．また，誰がやっても同じになるように環境を統一したい．そこで，コンテナを使う．</p>
+<pre class="java"><code>public class FizzBuzz {
+  public static void main(String[] args) {
+    for (int i = 1; i &lt;= 30; i++) {
+      int f = i % 3;
+      int b = i % 5;
+      if (f == 0) System.out.print(&quot;Fizz&quot;);
+      if (b == 0) System.out.print(&quot;Buzz&quot;);
+      if (f != 0 &amp;&amp; b != 0) System.out.print(i);
+      System.out.println();
+    }
+  }
+}</code></pre>
+<p><strong>課題</strong>
+イメージ<code>openjdk</code>を使って解決する方法を説明せよ．</p>
+<p>ヒント：イメージの構築は<code>docker run --rm -it -v &quot;$(pwd):/root/work&quot; openjdk bash</code>である（<code>bash</code>はシェルを起動するためのコマンド）．次のようにしてコンパイル，実行できる．</p>
+<pre class="bash"><code>javac FizzBuzz.java # コンパイル
+java FizzBuzz       # 実行</code></pre>
+<p><strong>課題</strong>
+イメージ<code>ubuntu</code>を使って解決する方法を説明せよ．ヒント：JDKは<code>apt update &amp;&amp; apt install openjdk-21-jdk -y</code>でインストールできる．</p>
 </div>
-<div id="漸化式の解" class="section level5" number="1.6.3.3">
-<h5><span class="header-section-number">1.6.3.3</span> 漸化式の解♠</h5>
-<p>高校数学で習う方法で三項間漸化式を解くと， <span class="math display">\[a_n=\frac{\alpha^n-\beta^n}{\alpha-\beta}\]</span>
-になる．ここで <span class="math inline">\(\alpha=\dfrac{1+\sqrt
-5}{2}\)</span>, <span class="math inline">\(\beta=\dfrac{1-\sqrt
-5}{2}\)</span> である（特性方程式 <span class="math inline">\(x^2=x+1\)</span> の解）．<span class="math inline">\(\alpha\)</span> を黄金比という．</p>
-<p>補足：WolframAlphaで<a href="https://www.wolframalpha.com/input?i=a%5B0%5D%3D0%2Ca%5B1%5D%3D1%2Ca%5Bn%5D%3Da%5Bn-1%5D%2Ba%5Bn-2%5D&amp;lang=ja">「<code>a[0]=0,a[1]=1,a[n]=a[n-1]+a[n-2]</code>」</a>として，「<span class="math inline">\(a_n=F_n\)</span>」を得る（<span class="math inline">\(F_n\)</span> は <span class="math inline">\(n\)</span>
-番目のフィボナッチ数）．面白い結果ではない．</p>
-<p><strong>課題</strong> <span class="math inline">\(a_n\)</span>
-を，漸化式の解を使って求める関数<code>fib</code>を実装せよ．</p>
+<div id="latex" class="section level4" number="1.2.5">
+<h4><span class="header-section-number">1.2.5</span> LaTeX</h4>
+<p><strong>シナリオ</strong>　ローカル環境でLaTeXの組版をしたい．ただし，LaTeXの環境をOSに直接インストールすることは避けたい．また，誰がやっても同じになるように環境を統一したい．そこで，コンテナを使う．</p>
+<p><strong>課題</strong>
+イメージ<code>paperist/texlive-ja</code>を使って，<a href="L207.html">第7回</a>で作成した三つのファイルmain.tex，refs.bib，latexmkrcを処理して，main.pdfを作る方法を報告せよ．</p>
+<p>ヒント：三つのファイルがあるディレクトリで，コマンド<code>latexmk</code>を実行して組版する．ファイルをどこに置くかは，<a href="https://github.com/Paperist/texlive-ja">ドキュメント</a>で確認する．</p>
+<p>ファイルが多くなるから，専用のディレクトリを作ってそこで作業しよう．</p>
+<p>main.pdfができていれば終了．</p>
 </div>
-<div id="行列" class="section level5" number="1.6.3.4">
-<h5><span class="header-section-number">1.6.3.4</span> 行列♠</h5>
-<p>行列を使うと <span class="math display">\[\begin{bmatrix}
-a_{n+1} \\
-a_n\end{bmatrix}
-=\begin{bmatrix}
+<div id="jupyter-lab" class="section level4" number="1.2.6">
+<h4><span class="header-section-number">1.2.6</span> Jupyter Lab</h4>
+<p><strong>シナリオ</strong>　Google
+Colabのようなノートブック環境をローカルに構築したい．ただし，Pythonの開発環境をOSに直接インストールすることは避けたい．また，誰がやっても同じになるように環境を統一したい．そこで，コンテナを使う．</p>
+<p><strong>課題</strong>
+イメージ<code>quay.io/jupyter/datascience-notebook</code>を使って，Jupyter
+Labを 起動する方法を報告せよ．ヒント：<a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html">ドキュメント</a>を読むと，次のことがわかる．</p>
+<ul>
+<li>（必須）コンテナ側で使用するポートは8888である．</li>
+<li>ノートブックをホスト側で保存したい場合は，「<code>-v &quot;$(pwd):/home/jovyan/work&quot;</code>」とすればよい．</li>
+</ul>
+</div>
+<div id="独自のイメージ" class="section level4" number="1.2.7">
+<h4><span class="header-section-number">1.2.7</span> 独自のイメージ</h4>
+<div id="その1ccjava" class="section level5" number="1.2.7.1">
+<h5><span class="header-section-number">1.2.7.1</span>
+その1（C，C++，Java）</h5>
+<p><strong>シナリオ</strong>　C言語，C++，Javaの開発環境を用意したい．しかし，これらの処理系がインストール済みのイメージが見つからない（とする）．そこで，これらの処理系をインストール済みのイメージを自分で作る．</p>
+<p>次のようなDockerfileを作る．</p>
+<pre><code>FROM ubuntu
+
+RUN apt update &amp;&amp; DEBIAN_FRONTEND=noninteractive apt install -y \
+  g++ \
+  openjdk-21-jdk</code></pre>
+<p>イメージを構築し，そのイメージをもとにコンテナを構築する．イメージ名は自由に付けてよい．</p>
+<ol style="list-style-type: decimal">
+<li>イメージの構築（1回だけ）：<code>docker build -t イメージ名 .</code></li>
+<li>コンテナの構築：<code>docker run --rm -it イメージ名</code></li>
+</ol>
+<p><strong>課題</strong>
+起動したコンテナで，fizzbuzz.c，fizzbuzz.cc，FizzBuzz.javaをコンパイル・実行できることを確かめよ．</p>
+</div>
+<div id="その2latex" class="section level5" number="1.2.7.2">
+<h5><span class="header-section-number">1.2.7.2</span>
+その2（LaTeX）</h5>
+<p><strong>シナリオ</strong>　行列や連立方程式を次のようにマークアップしようとしたら，必要なパッケージがDockerイメージに含まれていなかった．そこで，必要なパッケージを含んだイメージを自分で作る．</p>
+<pre class="tex"><code>\documentclass[autodetect-engine,dvipdfmx]{jsarticle}
+\usepackage{graphicx}
+\usepackage{physics, systeme} % 追加
+
+\begin{document}
+
+アインシュタインは $E=mc^2$ と言った\cite{okumura}。
+
+\begin{equation} % 行列
+A=\mqty[
 1 &amp; 1\\
-1 &amp; 0\end{bmatrix}
-\begin{bmatrix}
-a_n \\
-a_{n-1}\end{bmatrix}
-=A\begin{bmatrix}
-a_n \\
-a_{n-1}\end{bmatrix}
-=A^n\begin{bmatrix}
-a_1 \\
-a_0\end{bmatrix}
-=A^n\begin{bmatrix}
-1 \\
-0\end{bmatrix}\quad(A=\begin{bmatrix}
-1 &amp; 1\\
-1 &amp; 0\end{bmatrix})\]</span> だから，<span class="math inline">\(\displaystyle A^n\begin{bmatrix}
-1 \\
-0\end{bmatrix}\)</span> の第 <span class="math inline">\(2\)</span>
-成分（<span class="math inline">\(A^n\)</span> の <span class="math inline">\((2,1)\)</span> 成分）が <span class="math inline">\(a_n\)</span> である．</p>
-<p><strong>課題</strong> <span class="math inline">\(a_n\)</span>
-を，行列を使って求める関数<code>fib</code>を実装せよ．<span class="math inline">\(A^n\)</span> は <span class="math inline">\(A\)</span>
-を対角化して求めてもよいが，ここではコンピュータで直接計算しよう．</p>
-<p>対角化については，長崎憲一, 横山利章『明解線形代数』（培風館,
-2024）を参照．WolframAlphaで<a href="https://www.wolframalpha.com/input?i=diagonalize+%7B%7B1%2C1%7D%2C%7B1%2C0%7D%7D&amp;lang=ja">「<code>diagonalize {{1,1},{1,0}}</code>」</a>として対角化の結果を得る．</p>
-<p>補足：特性方程式が重解を持つ場合や，行列を対角化できない場合でも，漸化式の一般項は求められる．例：<span class="math inline">\(a_0=1, a_1=8, a_n=6a_{n-1}-9a_{n-1}\,(n\ge
-2)\)</span> のとき，<span class="math inline">\(a_n=3^{n-1}(5n+3)\)</span>
-である．WolframAlphaで<a href="https://www.wolframalpha.com/input?i=a%5B0%5D%3D1%2Ca%5B1%5D%3D8%2Ca%5Bn%5D%3D6a%5Bn-1%5D-9a%5Bn-2%5D&amp;lang=ja">「<code>a[0]=1,a[1]=8,a[n]=6a[n-1]-9a[n-2]</code>」</a>として確認できる．</p>
+1 &amp; 0]
+\end{equation}
+
+\begin{equation} % 連立方程式
+\systeme{2x-3y=5,x+y=0}
+\end{equation}
+
+\bibliographystyle{jplain}
+\bibliography{refs}
+\end{document}</code></pre>
+<p><strong><code>pushd tex</code>で，TeX用の作業フォルダで作業する．終わったら<code>popd</code>で戻る．</strong></p>
+<p><strong>課題</strong>
+組版しようとするとどういうエラーになるか，日本語で答えよ．（エラーからの復帰は「?」に対しては「<code>q</code>エンター」，「Enter
+file name:」に対してはCtrl-c．）</p>
+<p>次のようなDockerfileを作る．</p>
+<pre><code>FROM paperist/alpine-texlive-ja
+
+RUN tlmgr update --self &amp;&amp; \
+tlmgr install \
+  physics \
+  systeme</code></pre>
+<p><strong>課題</strong>
+作成したイメージで組版できることを確かめよ．</p>
 </div>
 </div>
 </div>
+<div id="後片付け" class="section level3" number="1.3">
+<h3><span class="header-section-number">1.3</span> 後片付け</h3>
+<p><strong>不要なイメージやコンテナが残っていないか確認する．</strong>Docker
+DesktopのGUIを使うのが簡単だが，次のようにしてもよい．</p>
+<pre class="bash"><code>docker ps -a
+docker images</code></pre>
 </div>
-<div id="補足" class="section level2" number="2">
-<h2><span class="header-section-number">2</span> 補足</h2>
+</div>
+<div id="シェル教科書第16章" class="section level2" number="2">
+<h2><span class="header-section-number">2</span>
+シェル（教科書第16章）</h2>
+<p>参考書</p>
+<ul>
+<li>Kernighan, Pike『UNIXプログラミング環境』（アスキー,
+1985）あるいは（KADOKAWA, 2017）</li>
+<li>Mike Gancarz『UNIXという考え方 : その設計思想と哲学』（オーム社,
+2001）</li>
+<li>Eric S.Raymond『The Art of UNIX Programming』（KADOKAWA, 2019）</li>
+</ul>
+<p><strong>コンテナで実行し，結果や説明をGoogle
+Colabのノートブックに書く．</strong></p>
+<p>文字列のコマンドを使ってコンピュータを操作する方法</p>
+<ul>
+<li>Bash: Linux，macOS（正確にはZsh），Windows（Windows Subsystem for
+Linux, WSL）</li>
+<li>PowerShell: Windows</li>
+<li>コマンドプロンプト: Windows</li>
+</ul>
+<p>主要な環境では必ず使えるBashを学んでおくとよい．</p>
+<p>コマンドを使う利点</p>
+<ul>
+<li>確実なコミュニケーション</li>
+<li>繰り返す場合の効率の良さ</li>
+</ul>
+<p>教科書p.191の脚註で参照されている記事は古いから，WSLについて知りたい場合は，別のものを探すとよいだろう．とはいえ，ここでは，WSLは想定しない（WSLの設定が不明だから）．Linuxのコンテナ内でBashを使うことにする．</p>
+<div id="bashの起動" class="section level3" number="2.1">
+<h3><span class="header-section-number">2.1</span> Bashの起動</h3>
+<p>起動</p>
+<pre class="bash"><code># 最後の「bash」はイメージubuntuのデフォルトだから，省略可．
+docker run --rm -it ubuntu bash</code></pre>
+<p>停止（コンテナは削除される．）</p>
+<pre class="bash"><code>exit</code></pre>
+</div>
+<div id="コマンド" class="section level3" number="2.2">
+<h3><span class="header-section-number">2.2</span> コマンド</h3>
+<p><strong>課題</strong> Bashで「Hello, World!」と表示する．</p>
+</div>
+<div id="man" class="section level3" number="2.3">
+<h3><span class="header-section-number">2.3</span> man</h3>
+<p>コマンドの簡単な使い方は「<code>コマンド --help</code>」で確認できることが多い（例：「sort
+–help」）．</p>
+<p>詳しい説明がほしいときは「<code>man コマンド</code>」で表示されるマニュアルを読む．しかし，dockerのUbuntuでは，イメージのサイズを小さくするために，マニュアルが無効になっている．通常はそのままでよいが，マニュアルを読みたい場合は次のようにして，マニュアルを有効にする．</p>
+<pre class="bash"><code>apt update
+apt install unminimize man-db -y
+unminimize</code></pre>
+<p>最後を「yes |
+unminimize」にすると，インストールが対話的でなくなる．</p>
+<p>確認：「<code>man sort</code>」（<code>q</code>で終了）</p>
+<p>日本語マニュアルがほしいときは自分で調べる．</p>
+</div>
+<div id="相対パスvs絶対パス" class="section level3" number="2.4">
+<h3><span class="header-section-number">2.4</span>
+相対パスvs絶対パス</h3>
+<p><strong>課題</strong>
+treeをインストールして，「<code>tree -d -L 1 /</code>」と「<code>tree -d -L 2 /</code>」を試す．</p>
+<p>補足：<a href="https://forest.watch.impress.co.jp/docs/serial/yajiuma/1601513.html">「/usr」は「User」の略にあらず？
+Linuxのディレクトリ構造を解説したチャートが話題に</a></p>
+<p><strong>課題</strong>
+<code>cd /</code>でルートに移動して，<code>ls</code>や<code>pwd</code>を試す．</p>
+<p><strong>課題</strong>
+<code>cd</code>でホームディレクトリに移動して，次の作業を行う．ただし，相対パスのみを使うこと（つまり，パスを<code>/</code>で初めてはいけない．）</p>
+<ol style="list-style-type: decimal">
+<li>カレントディレクトリを<code>pwd</code>で確認する．</li>
+<li>ディレクトリtstpを作る．</li>
+<li>ディレクトリtstpができたことを確認する．</li>
+<li>ディレクトリtstpに移動する．</li>
+<li>一つ上のディレクトリに戻る．</li>
+<li>ディレクトリtstpを削除する．</li>
+<li>ディレクトリtstpが削除されたことを確認する．</li>
+</ol>
+<p><strong>課題</strong>
+<code>cd /root</code>でホームディレクトリに移動して，同じ作業を行う．ただし，絶対パスのみを使うこと（つまり，パスを<code>/</code>で初めなければならない．）</p>
+</div>
+<div id="フラグオプション" class="section level3" number="2.5">
+<h3><span class="header-section-number">2.5</span>
+フラグ（オプション）</h3>
+<p><strong>課題</strong>
+ホームディレクトリに移動して，次の結果を比較せよ．</p>
+<ul>
+<li><code>ls</code></li>
+<li><code>ls -a</code></li>
+<li><code>ls -l</code></li>
+<li><code>ls -al</code></li>
+</ul>
+<p><strong>課題</strong>
+<code>ls -al</code>の結果として表示される5行について，1行ずつ説明せよ．</p>
+</div>
+<div id="リダイレクトとパイプ" class="section level3" number="2.6">
+<h3><span class="header-section-number">2.6</span>
+リダイレクトとパイプ</h3>
+<p>コマンドの実行結果をファイルに書き出すしくみをリダイレクト，別のコマンドに渡すしくみをパイプという．</p>
+<p><strong>課題</strong>
+<code>tree /</code>の結果をホームディレクトリのtree.datに書き出せ．</p>
+<p><strong>課題</strong>
+<code>tree /</code>の結果をコマンド<code>more</code>に渡せ（qで終了）．</p>
+<p><strong>課題</strong>
+<code>tree /</code>の結果をコマンド<code>less</code>に渡せ（qで終了）．<code>less</code>が無かったらインストールすること．</p>
+<p><strong>課題</strong> ファイルtree.datの内容を表示せよ．</p>
+<p><strong>課題</strong>
+ファイルtree.datの内容を表示せよ．ただし，結果をコマンド<code>less</code>に渡せ．</p>
+<p><strong>課題</strong> 以下のシナリオをシェル上で実行せよ．</p>
+<ol style="list-style-type: decimal">
+<li>「<code>for i in {1..500}; do echo $((RANDOM % 101)); done &gt; /tmp/numbers.txt</code>」でファイルを作る．</li>
+<li>/tmp/numbers.txtをホームディレクトリにコピーする．（コピーの練習）</li>
+<li>/tmp/numbers.txtを削除する．（削除の練習）</li>
+<li>ホームディレクトリのnumbers.txtのファイル名をnumbers.datに変更する．（移動の練習）</li>
+<li>numbers.datの行数を数える（<code>wc</code>を使う）．</li>
+<li>numbers.datを数値として並べ替えた結果をnums.txtに書き込む（<code>sort</code>を使う）．</li>
+<li>nums.txtの最初の10行を表示する．注意：1の次は10ではないはず．</li>
+<li>nums.txtの最後のの10行を表示する．</li>
+<li>nums.txtから重複を取り除いた結果の行数を数える（約100になるはず）．</li>
+<li>nums.txtを集計し，最も多いものを表示する．</li>
+<li>ワンライナー（1回のコマンド実行）で，1から100までの整数の乱数を500個作り，最も多く登場するものを表示する．</li>
+</ol>
+<p><strong>課題♠</strong>
+「<code>for i in {1..500}; do echo $((RANDOM % 101)); done | python3 count.py</code>」で同じ結果になるような，count.pyを実装せよ．</p>
+<p><strong>課題♠</strong> 上記のシナリオをGUIで行う方法を説明せよ．</p>
+</div>
+<div id="環境変数" class="section level3" number="2.7">
+<h3><span class="header-section-number">2.7</span> 環境変数</h3>
+<p>環境変数<code>DEBIAN_FRONTEND</code>の値を<code>noninteractive</code>にすると，aptのインストールが非対話的になる．</p>
+<p>一時的に設定する方法</p>
+<pre class="bash"><code>apt update
+DEBIAN_FRONTEND=noninteractive apt install python3 -y</code></pre>
+<p>設定をbashの終了まで保つ方法</p>
+<pre class="bash"><code>export DEBIAN_FRONTEND=noninteractive
+echo $DEBIAN_FRONTEND # 確認
+apt update
+apt install python3 -y</code></pre>
+<p><strong>課題</strong>
+「一時的に設定する方法」を使ってPythonをインストールし，動作を確認する．</p>
+<p><strong>課題</strong>
+コンテナを一度削除して，新しいコンテナで「設定をbashの終了まで保つ方法」を使ってPythonをインストールし，動作を確認する．</p>
+</div>
+<div id="テキストファイル" class="section level3" number="2.8">
+<h3><span class="header-section-number">2.8</span> テキストファイル</h3>
+<p><strong>課題</strong>
+~/workに次のような内容のテキストファイルを作れ．五つの方法を試すこと．</p>
+<pre><code>abc
+def
+hij</code></pre>
+<ol style="list-style-type: decimal">
+<li><code>echo -e</code>とリダイレクトを使う．ヒント：改行は<code>\n</code></li>
+<li>ヒアドキュメントとリダイレクトを使う．ヒント：始まりは<code>cat &lt;&lt; EOF</code></li>
+<li>テキストエディタ<code>nano</code>を使う．<code>nano</code>が無い場合はインストールする．</li>
+<li>VS Codeの拡張機能Dev
+Containersを使ってコンテナにアタッチして編集する．（演習室で動かない場合はやらなくてよい．）</li>
+<li>コンテナ構築時に<code>-v &quot;$(pwd):/root/work</code>として，ホスト側で編集する．</li>
+<li>♠テキストエディタ<code>vim</code>を使う．<code>vim</code>が無い場合はインストールする．（vimの使い方は少し調べた方がよいだろう．最後は<code>:q!</code>なのだが，よくわからなければCtrl-z）</li>
+<li>♠テキストエディタ<code>emacs</code>を使う．<code>emacs</code>が無い場合はインストールする．（emacsの使い方は少し調べた方がよいだろう．最後はCtrl-x
+Ctrl-cなのだが，よくわからなければCtrl-z）</li>
+</ol>
+<p>補足：Ctrl-Zは強制終了ではなく「バックグラウンドへの移動」．プロセスは残っているから，強制終了のためには<code>jobs</code>でプロセスを確認して，<code>kill %番号</code>などとする必要がある．あまり気にせずコンテナを削除してもよい．</p>
+<p><strong>ファイル等を入力するときにTABキーで補完が効く．</strong></p>
+</div>
+<div id="ファイルの実行" class="section level3" number="2.9">
+<h3><span class="header-section-number">2.9</span> ファイルの実行</h3>
+<p>Bashのコマンドを記述したファイルtest.shをホームディレクトリに用意する．</p>
+<pre><code>echo Hello,
+efcho World!</code></pre>
+<p><strong>課題</strong>
+<code>bash test.sh</code>で実行できることを確かめる．</p>
+<p><strong>課題</strong>
+相対パス（<code>./test.sh</code>）と絶対パス（<code>/root/test.sh</code>）だけで実行できるようにする．ヒント：<code>chmod</code>を使う．</p>
+<p><strong>課題</strong>
+<code>test.sh</code>だけで実行できるようにする（例：「<code>cd /; test.sh</code>」）．ヒント：環境変数PATHを設定する．</p>
+<p><strong>課題</strong>
+次のような内容のファイル/root/work/hello.pyを作り，「<code>cd /; hello.py</code>」で実行できるようにする．1行目はシェバンという（単なるコメントではない）．</p>
+<pre class="python"><code>#!/usr/bin/python
+print(&quot;hello, world&quot;)</code></pre>
+</div>
+</div>
+<div id="補足" class="section level2" number="3">
+<h2><span class="header-section-number">3</span> 補足</h2>
 <p><strong>課題</strong>
 これまでの課題について，気になったことを新たな<strong>課題</strong>とし，調べて解決せよ．良い課題は，来年の演習で採用する（作問者名掲載）．</p>
 <p><strong>課題</strong>
