@@ -1519,6 +1519,13 @@ Codeで左下のアイコンをクリック→SSH（あるいは「ホストに�
 <p>Ctrl+<code>@</code>でターミナルを開く。</p>
 <p>レジストリサーバにログインする（ユーザ名，パスワードは演習室のPCと同じ）。</p>
 <pre class="sh"><code>docker login gpumng.cle.it-chiba.ac.jp</code></pre>
+<p>Docker
+Hubにもログインする（ユーザ名≠メアド，パスワードは自分で登録したもの．忘れた場合は，<a href="https://hub.docker.com/" class="uri">https://hub.docker.com/</a>
+で「Sign in」，メアドを入力して，「Forget
+password?」をクリック，メールに対応する）．</p>
+<pre class="sh"><code>docker login</code></pre>
+<p>イメージをダウンロードしておく．</p>
+<pre class="sh"><code>docker pull ubuntu:22.04</code></pre>
 <p>作業用のディレクトリ<code>~/test</code>と，Ollamaのモデルを格納するディレクトリ<code>~/ollama</code>を作る。</p>
 <pre class="sh"><code>mkdir ~/test
 mkdir ~/ollama</code></pre>
@@ -1566,7 +1573,7 @@ sbatch query.job</code></pre>
 <div id="期末試験" class="section level2" number="3">
 <h2><span class="header-section-number">3</span> 期末試験</h2>
 <p><strong>課題</strong>
-「情報リテラシ演習2」の期末試験の問題を5題作り，に解かせて，回答を採点せよ。問題の難易度は，「情報リテラシ演習2」の期末試験にふさわしいものにすること。生成AIは1個以上を自由に選んでよいが，Gemma
+「情報リテラシ演習2」の期末試験の問題を5題作り，生成AIに解かせて，回答を採点せよ。問題の難易度は，「情報リテラシ演習2」の期末試験にふさわしいものにすること。生成AIは1個以上を自由に選んでよいが，Gemma
 2を含めること（Gemma 2だけでもよい）．</p>
 <p><strong>課題</strong>
 期末試験の採点結果についての「講評」を書いてみよう。「よくできていた。」で済ませないこと。</p>
