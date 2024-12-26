@@ -1525,50 +1525,44 @@ Hubにもログインする（ユーザ名≠メアド，パスワードは自�
 password?」をクリック，メールに対応する）．</p>
 <pre class="sh"><code>docker login</code></pre>
 <p>イメージをダウンロードしておく．</p>
-<pre class="sh"><code>docker pull ubuntu:22.04</code></pre>
-<p>作業用のディレクトリ<code>~/test</code>と，Ollamaのモデルを格納するディレクトリ<code>~/ollama</code>を作る。</p>
+<pre class="sh"><code>docker pull ollama/ollama</code></pre>
+<p>作業用のディレクトリ<code>~/test</code>と，Ollamaのモデルを格納するディレクトリ<code>~/ollama</code>を作る（<code>~</code>はホームディレクトリのこと）。</p>
 <pre class="sh"><code>mkdir ~/test
 mkdir ~/ollama</code></pre>
-<p>GoogleのオープンなLLMである，Gemma
-2への問合せを実行する。そのためのスクリプト<code>~/test/query.job</code>を用意する。内容は次のとおり。</p>
+<p>Gemma
+2（GoogleのオープンなLLM）への問合せを実行する。そのためのスクリプト<code>~/test/query.job</code>を用意する。内容は次のとおり（一部を後述の指示に従って書き換える）。</p>
 <pre class="sh"><code>#!/bin/bash
 #SBATCH --partition=class
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1
-#SBATCH --cpus-per-task=1
+#SBATCH --cpus-per-task=3
 #SBATCH --gpus-per-task=1
-#SBATCH --mem=16G
+#SBATCH --mem=90G
 #SBATCH --mail-type=END
 #SBATCH --mail-user=メアド
-#SBATCH --container=ubuntu:22.04
+#SBATCH --container=ollama/ollama
+#CONTAINER --disable-entrypoint=True
 
-# 準備
-apt-get update &gt; /dev/null 2&gt;&amp;1
-apt-get install -y curl &gt; /dev/null 2&gt;&amp;1
-
-# 準備：Ollamaのインストール
-mkdir -p $HOME
-ln -s /root/ollama $HOME/.ollama
-curl -fsSL https://ollama.com/install.sh | sh &gt; /dev/null 2&gt;&amp;1
-
-# 準備：Ollamaの起動
+export OLLAMA_MODELS=/root/ollama
+export OLLAMA_HOST=&quot;127.0.0.1:60XXX&quot;
 ollama serve &gt; /dev/null 2&gt;&amp;1 &amp;
 sleep 10
 
-# 本題
 ollama run gemma2 &quot;リストの要素の和を再帰で求める方法を説明し，C++で実装せよ。&quot; 2&gt; /dev/null
 
 # コマンドを続けてもよい。</code></pre>
 <ul>
-<li>「メアド」は自分のメアドで置き換える。ジョブが終わるとそこにメールが送られる。メール通知が不要な場合は，関係する2行を削除すること。</li>
-<li>質問文は，適当なものに書き換えること。</li>
+<li><code>メアド</code>を自分のメアドで置き換える。ジョブが終わるとそこにメールが送られる。メール通知が不要な場合は，関係する2行を削除する。</li>
+<li><code>XXX</code>を自分の学籍番号の下3桁で置き換える。</li>
+<li>質問文を適当なものに書き換える。</li>
 </ul>
 <p>ジョブを実行する。</p>
 <pre class="sh"><code>cd ~/test
 sbatch query.job</code></pre>
-<p>ジョブの状態を確認する。ジョブをキャンセルする場合は<code>scancel 番号</code>。</p>
+<p>ジョブの状態を確認する。</p>
 <pre class="sh"><code>squeue</code></pre>
 <p>結果はファイル<code>slurm-番号.out</code>に出力される。ジョブが終わったら，このファイルの中身を確認する。</p>
+<p>途中でジョブをキャンセルする場合は<code>scancel 番号</code>。</p>
 </div>
 <div id="期末試験" class="section level2" number="3">
 <h2><span class="header-section-number">3</span> 期末試験</h2>
